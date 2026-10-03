@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cairo: "Cairo", system-ui, -apple-system, sans-serif;
+    --font-amiri: "Amiri", Georgia, serif;
+    --font-ibm: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(10, 62, 49, 0.2);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(52, 211, 153, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(10, 62, 49, 0.4);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 211, 153, 0.4);
+}
+
+/* Subtle Islamic geometric lattice pattern overlay */
+.bg-arabesque {
+  background-image: radial-gradient(rgba(10, 62, 49, 0.05) 1px, transparent 1px), radial-gradient(rgba(200, 163, 102, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.dark .bg-arabesque {
+  background-image: radial-gradient(rgba(52, 211, 153, 0.05) 1px, transparent 1px), radial-gradient(rgba(226, 199, 153, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Audio wave pulse animation */
+@keyframes soundwave {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+
+.animate-soundwave-1 {
+  animation: soundwave 1s ease-in-out infinite;
+}
+.animate-soundwave-2 {
+  animation: soundwave 1s ease-in-out infinite 0.2s;
+}
+.animate-soundwave-3 {
+  animation: soundwave 1s ease-in-out infinite 0.4s;
+}
+.animate-soundwave-4 {
+  animation: soundwave 1s ease-in-out infinite 0.6s;
+}
+.animate-soundwave-5 {
+  animation: soundwave 1s ease-in-out infinite 0.8s;
+}

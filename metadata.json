@@ -1,0 +1,6 @@
+{
+  "name": "Burhan AI | منصة برهان الذكية",
+  "description": "منصة ذكية للرد على الشبهات والاستفسارات الشرعية والدعوية بالبراهين الموثقة ومحاكي الحوار التفاعلي",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
