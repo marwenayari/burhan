@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import {
   SkepticPersonaId,
   Language,
@@ -10,6 +10,14 @@ import {
 import { SKEPTIC_PERSONAS, DOUBTS_DATA } from '@/lib/data/doubts';
 import { TRANSLATIONS } from '@/lib/data/translations';
 import {
+  buildDebateVariables,
+  clampScore,
+  DebateEvaluationToolParams,
+} from '@/lib/elevenlabs';
+import VoiceDebateStage from '@/components/VoiceDebateStage';
+import {
+  AudioLines,
+  Keyboard,
   MessageSquareCode,
   Send,
   Volume2,
@@ -27,6 +35,27 @@ import {
   Copy,
   Check,
 } from 'lucide-react';
+
+type SessionMode = 'text' | 'voice';
+
+// Persona's first line: opens the text chat, and is sent to the voice agent as `opening_line`.
+const getOpeningLine = (personaId: SkepticPersonaId, topic: string, isAr: boolean) => {
+  const initialOpening: Record<SkepticPersonaId, { ar: string; en: string }> = {
+    stubborn: {
+      ar: `أهلاً بك. قرأت الكثير من محاولات التبرير في موضوع "${topic}"، لكني لم أجد دليلاً واحداً مقنعاً يخلو من الدور المنطقي أو المصادرة على المطلوب! كيف تثبت لي وجهة نظرك دون أن تطلب مني الإيمان المسبق؟`,
+      en: `Greetings. I have analyzed countless attempts to rationalize "${topic}", but failed to find a single argument free of circular logic. How do you objectively prove your position without presupposing scripture?`,
+    },
+    evasive: {
+      ar: `مرحباً، أردت الحديث معك حول "${topic}". كيف يمكن لعقل حر أن يقبل بهذه المفارقة في عصر الاكتشافات العلمية والفكر الإنساني المعاصر؟`,
+      en: `Hello. Let us discuss "${topic}". How can an objective intellect accept such an apparent paradox in our age of scientific clarity and moral philosophy?`,
+    },
+    seeker: {
+      ar: `السلام عليكم، لقد شغلتني مسألة "${topic}" طويلاً وتسببت لي في حيرة حقيقية. أبحث عن فهم هادئ ومقنع يزيل هذا الإشكال ويخاطب العقل والوجدان بصدق. فما هو البيان الشافي لديكم؟`,
+      en: `Peace be upon you. The dilemma of "${topic}" has weighed heavily on my thoughts. I am sincerely seeking a compassionate, coherent explanation that satisfies both intellect and soul. How do you articulate this truth?`,
+    },
+  };
+  return isAr ? initialOpening[personaId].ar : initialOpening[personaId].en;
+};
 
 interface SimulatorViewProps {
   language: Language;
@@ -50,7 +79,9 @@ export default function SimulatorView({
     initialTopic || (isAr ? 'شبهة وجود الشر والألم في العالم وعلاقته بالحكمة الإلهية' : 'The Problem of Evil vs Divine Wisdom')
   );
   const [customTopic, setCustomTopic] = useState('');
+  const [sessionMode, setSessionMode] = useState<SessionMode>('voice');
   const [isSessionActive, setIsSessionActive] = useState(false);
+  const [hasVoiceEvaluation, setHasVoiceEvaluation] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +107,32 @@ export default function SimulatorView({
   const selectedPersona =
     SKEPTIC_PERSONAS.find((p) => p.id === selectedPersonaId) ||
     SKEPTIC_PERSONAS[0];
+
+  const activeTopic = customTopic.trim() || selectedTopic;
+  const isVoiceSession = isSessionActive && sessionMode === 'voice';
+
+  const voiceVariables = useMemo(
+    () =>
+      buildDebateVariables({
+        persona: selectedPersona,
+        topic: activeTopic,
+        language,
+        openingLine: getOpeningLine(selectedPersona.id, activeTopic, isAr),
+      }),
+    [selectedPersona, activeTopic, language, isAr]
+  );
+
+  // Called by the voice agent through the `update_debate_evaluation` client tool
+  const handleVoiceEvaluation = useCallback((params: DebateEvaluationToolParams) => {
+    setHasVoiceEvaluation(true);
+    setCurrentScore((prev) => ({
+      strength: clampScore(params.strength, prev.strength),
+      sourceQuality: clampScore(params.source_quality, prev.sourceQuality),
+      manner: clampScore(params.manner, prev.manner),
+      strengthsText: params.strengths_feedback || prev.strengthsText,
+      improvementsText: params.improvement_feedback || prev.improvementsText,
+    }));
+  }, []);
 
   const presetTopics = [
     {
@@ -121,30 +178,21 @@ export default function SimulatorView({
 
   // Start Session
   const handleStartSession = () => {
-    const topicToUse = customTopic.trim() || selectedTopic;
     setIsSessionActive(true);
 
-    const initialOpening: Record<SkepticPersonaId, { ar: string; en: string }> = {
-      stubborn: {
-        ar: `أهلاً بك. قرأت الكثير من محاولات التبرير في موضوع "${topicToUse}"، لكني لم أجد دليلاً واحداً مقنعاً يخلو من الدور المنطقي أو المصادرة على المطلوب! كيف تثبت لي وجهة نظرك دون أن تطلب مني الإيمان المسبق؟`,
-        en: `Greetings. I have analyzed countless attempts to rationalize "${topicToUse}", but failed to find a single argument free of circular logic. How do you objectively prove your position without presupposing scripture?`,
-      },
-      evasive: {
-        ar: `مرحباً، أردت الحديث معك حول "${topicToUse}". كيف يمكن لعقل حر أن يقبل بهذه المفارقة في عصر الاكتشافات العلمية والفكر الإنساني المعاصر؟`,
-        en: `Hello. Let us discuss "${topicToUse}". How can an objective intellect accept such an apparent paradox in our age of scientific clarity and moral philosophy?`,
-      },
-      seeker: {
-        ar: `السلام عليكم، لقد شغلتني مسألة "${topicToUse}" طويلاً وتسببت لي في حيرة حقيقية. أبحث عن فهم هادئ ومقنع يزيل هذا الإشكال ويخاطب العقل والوجدان بصدق. فما هو البيان الشافي لديكم؟`,
-        en: `Peace be upon you. The dilemma of "${topicToUse}" has weighed heavily on my thoughts. I am sincerely seeking a compassionate, coherent explanation that satisfies both intellect and soul. How do you articulate this truth?`,
-      },
-    };
+    // Voice sessions are run end-to-end by the ElevenLabs agent
+    if (sessionMode === 'voice') {
+      if (typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+      setMessages([]);
+      return;
+    }
 
     const openingMessage: ChatMessage = {
       id: 'init-1',
       sender: 'skeptic',
-      text: isAr
-        ? initialOpening[selectedPersonaId].ar
-        : initialOpening[selectedPersonaId].en,
+      text: getOpeningLine(selectedPersonaId, activeTopic, isAr),
       timestamp: new Date().toLocaleTimeString(isAr ? 'ar-SA' : 'en-US', {
         hour: '2-digit',
         minute: '2-digit',
@@ -184,7 +232,7 @@ export default function SimulatorView({
         body: JSON.stringify({
           personaId: selectedPersonaId,
           messages: updatedMessages,
-          topic: customTopic.trim() || selectedTopic,
+          topic: activeTopic,
           language,
         }),
       });
@@ -244,6 +292,7 @@ export default function SimulatorView({
     setIsSessionActive(false);
     setMessages([]);
     setIsSpeaking(false);
+    setHasVoiceEvaluation(false);
   };
 
   return (
@@ -265,48 +314,52 @@ export default function SimulatorView({
 
         {/* Voice and Controls Bar */}
         <div className="flex items-center gap-2 shrink-0">
-          <button
-            onClick={() => {
-              const next = !voiceEnabled;
-              setVoiceEnabled(next);
-              if (!next && typeof window !== 'undefined' && window.speechSynthesis) {
-                window.speechSynthesis.cancel();
-                setIsSpeaking(false);
-              }
-            }}
-            className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer border ${
-              voiceEnabled
-                ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm'
-                : 'bg-white dark:bg-[#0E1B17] text-[#4B5563] dark:text-neutral-300 border-[#0A3E31]/15 dark:border-white/10'
-            }`}
-            title="تفعيل/تعطيل الصوت التفاعلي (مجهز لـ ElevenLabs API)"
-          >
-            {voiceEnabled ? (
-              <>
-                <Volume2 className="w-4 h-4" />
-                <span>{t.voiceActive}</span>
-              </>
-            ) : (
-              <>
-                <VolumeX className="w-4 h-4" />
-                <span>{t.voiceInactive}</span>
-              </>
-            )}
-          </button>
+          {sessionMode === 'text' && (
+            <button
+              onClick={() => {
+                const next = !voiceEnabled;
+                setVoiceEnabled(next);
+                if (!next && typeof window !== 'undefined' && window.speechSynthesis) {
+                  window.speechSynthesis.cancel();
+                  setIsSpeaking(false);
+                }
+              }}
+              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer border ${
+                voiceEnabled
+                  ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm'
+                  : 'bg-white dark:bg-[#0E1B17] text-[#4B5563] dark:text-neutral-300 border-[#0A3E31]/15 dark:border-white/10'
+              }`}
+              title="تفعيل/تعطيل الصوت التفاعلي (مجهز لـ ElevenLabs API)"
+            >
+              {voiceEnabled ? (
+                <>
+                  <Volume2 className="w-4 h-4" />
+                  <span>{t.voiceActive}</span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-4 h-4" />
+                  <span>{t.voiceInactive}</span>
+                </>
+              )}
+            </button>
+          )}
 
           {isSessionActive && (
             <>
-              <button
-                onClick={handleCopyTranscript}
-                className="p-2 rounded-xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/15 dark:border-white/10 text-[#4B5563] dark:text-neutral-300 hover:text-[#0A3E31] transition-colors cursor-pointer"
-                title={t.exportTranscript}
-              >
-                {copiedTranscript ? (
-                  <Check className="w-4 h-4 text-emerald-600" />
-                ) : (
-                  <Copy className="w-4 h-4" />
-                )}
-              </button>
+              {!isVoiceSession && (
+                <button
+                  onClick={handleCopyTranscript}
+                  className="p-2 rounded-xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/15 dark:border-white/10 text-[#4B5563] dark:text-neutral-300 hover:text-[#0A3E31] transition-colors cursor-pointer"
+                  title={t.exportTranscript}
+                >
+                  {copiedTranscript ? (
+                    <Check className="w-4 h-4 text-emerald-600" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </button>
+              )}
               <button
                 onClick={handleReset}
                 className="p-2 rounded-xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/15 dark:border-white/10 text-[#4B5563] dark:text-neutral-300 hover:text-rose-600 transition-colors cursor-pointer"
@@ -402,10 +455,79 @@ export default function SimulatorView({
             </div>
           </div>
 
+          {/* 3. Choose Session Mode */}
+          <div>
+            <h3 className="text-base font-bold text-[#111827] dark:text-white mb-3">
+              {isAr ? 'اختر طريقة المحاورة' : 'Choose how to debate'}:
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {(
+                [
+                  {
+                    id: 'voice',
+                    Icon: AudioLines,
+                    titleAr: 'مناظرة صوتية مباشرة',
+                    titleEn: 'Live voice debate',
+                    descAr: 'حاور المشكك بصوتك في الزمن الحقيقي، كما في مناظرة حقيقية.',
+                    descEn: 'Speak with the skeptic in real time, like a real debate.',
+                    badgeAr: 'جديد',
+                    badgeEn: 'New',
+                  },
+                  {
+                    id: 'text',
+                    Icon: Keyboard,
+                    titleAr: 'حوار نصي مكتوب',
+                    titleEn: 'Written dialogue',
+                    descAr: 'اكتب ردودك بتأنٍّ وتلقَّ تقييماً مفصلاً بعد كل رد.',
+                    descEn: 'Compose each rebuttal carefully and get scored after every turn.',
+                  },
+                ] as const
+              ).map((mode) => {
+                const isSelected = sessionMode === mode.id;
+                return (
+                  <button
+                    key={mode.id}
+                    type="button"
+                    onClick={() => setSessionMode(mode.id)}
+                    aria-pressed={isSelected}
+                    className={`p-4 rounded-2xl border text-start transition-all cursor-pointer flex items-start gap-3 ${
+                      isSelected
+                        ? 'border-[#0A3E31] dark:border-emerald-500 bg-[#0A3E31]/5 dark:bg-emerald-950/20 shadow-md ring-2 ring-[#0A3E31]/20'
+                        : 'border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] hover:border-[#0A3E31]/30'
+                    }`}
+                  >
+                    <span
+                      className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        isSelected
+                          ? 'bg-[#0A3E31] dark:bg-emerald-600 text-white'
+                          : 'bg-[#0A3E31]/5 dark:bg-white/5 text-[#0A3E31] dark:text-emerald-400'
+                      }`}
+                    >
+                      <mode.Icon className="w-5 h-5" />
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="flex items-center gap-2 font-bold text-sm text-[#111827] dark:text-white mb-1">
+                        {isAr ? mode.titleAr : mode.titleEn}
+                        {'badgeAr' in mode && (
+                          <span className="text-[10px] font-semibold text-[#C8A366] dark:text-[#E2C799] bg-[#C8A366]/10 px-1.5 py-0.5 rounded-md border border-[#C8A366]/20">
+                            {isAr ? mode.badgeAr : mode.badgeEn}
+                          </span>
+                        )}
+                      </span>
+                      <span className="block text-xs text-[#6B7280] dark:text-neutral-400 leading-relaxed">
+                        {isAr ? mode.descAr : mode.descEn}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Start CTA */}
-          <div className="pt-4 border-t border-black/5 dark:border-white/5 flex items-center justify-between">
+          <div className="pt-4 border-t border-black/5 dark:border-white/5 flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-4">
             <div className="text-xs text-[#6B7280] dark:text-neutral-400 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[#C8A366]" />
+              <Sparkles className="w-4 h-4 text-[#C8A366] shrink-0" />
               <span>
                 {isAr
                   ? 'سيتم تقييم ردودك فورياً على محاور قوة الحجة، وجودة المصدر، ولين الجانب.'
@@ -415,129 +537,151 @@ export default function SimulatorView({
 
             <button
               onClick={handleStartSession}
-              className="px-6 py-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
             >
-              <MessageSquareCode className="w-4 h-4" />
-              <span>{t.startSession}</span>
+              {sessionMode === 'voice' ? (
+                <AudioLines className="w-4 h-4" />
+              ) : (
+                <MessageSquareCode className="w-4 h-4" />
+              )}
+              <span>
+                {sessionMode === 'voice'
+                  ? isAr
+                    ? 'بدء المناظرة الصوتية'
+                    : 'Start voice debate'
+                  : t.startSession}
+              </span>
             </button>
           </div>
         </div>
       ) : (
         /* Active Dialogue Session Layout: Chat Box + Real-time Rubric Drawer */
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Chat Area (8 cols on lg) */}
-          <div className="lg:col-span-8 flex flex-col h-[650px] bg-white dark:bg-[#0E1B17] rounded-3xl border border-[#0A3E31]/10 dark:border-white/10 shadow-sm overflow-hidden">
-            {/* Chat Top Banner */}
-            <div className="px-5 py-3.5 border-b border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{selectedPersona.avatar}</span>
-                <div>
-                  <div className="font-bold text-sm text-[#111827] dark:text-white">
-                    {isAr ? selectedPersona.nameAr : selectedPersona.nameEn}
-                  </div>
-                  <div className="text-[11px] text-[#6B7280] dark:text-neutral-400 truncate max-w-xs sm:max-w-md">
-                    {customTopic.trim() || selectedTopic}
-                  </div>
-                </div>
-              </div>
-
-              {/* Speaking Indicator */}
-              {isSpeaking && (
-                <div className="flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                  <span className="w-1.5 h-3 bg-emerald-500 rounded-full animate-soundwave-1" />
-                  <span className="w-1.5 h-4 bg-emerald-500 rounded-full animate-soundwave-2" />
-                  <span className="w-1.5 h-2 bg-emerald-500 rounded-full animate-soundwave-3" />
-                  <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 ms-1">
-                    {isAr ? 'يتحدث...' : 'Speaking...'}
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {/* Messages Scroll Area */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
-              {messages.map((msg) => {
-                const isUser = msg.sender === 'user';
-                return (
-                  <div
-                    key={msg.id}
-                    className={`flex flex-col ${
-                      isUser ? 'items-end' : 'items-start'
-                    }`}
-                  >
-                    <div className="flex items-end gap-2 max-w-[85%] sm:max-w-[78%]">
-                      {!isUser && (
-                        <div className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 text-base mb-1">
-                          {selectedPersona.avatar}
-                        </div>
-                      )}
-
-                      <div
-                        className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
-                          isUser
-                            ? 'bg-[#0A3E31] text-white rounded-br-xs dark:bg-emerald-700'
-                            : 'bg-[#F4EFE6] dark:bg-[#122420] text-[#1F2937] dark:text-neutral-100 rounded-bl-xs border border-[#0A3E31]/10 dark:border-white/5'
-                        }`}
-                      >
-                        {msg.text}
-                      </div>
-
-                      {isUser && (
-                        <div className="w-8 h-8 rounded-full bg-[#C8A366] text-white font-bold flex items-center justify-center shrink-0 text-xs mb-1">
-                          {isAr ? 'أنت' : 'You'}
-                        </div>
-                      )}
+          {isVoiceSession ? (
+            /* Voice Stage (8 cols on lg): embedded ElevenLabs agent */
+            <VoiceDebateStage
+              className="lg:col-span-8 h-[650px]"
+              language={language}
+              persona={selectedPersona}
+              topic={activeTopic}
+              variables={voiceVariables}
+              onEvaluation={handleVoiceEvaluation}
+            />
+          ) : (
+            /* Main Chat Area (8 cols on lg) */
+            <div className="lg:col-span-8 flex flex-col h-[650px] bg-white dark:bg-[#0E1B17] rounded-3xl border border-[#0A3E31]/10 dark:border-white/10 shadow-sm overflow-hidden">
+              {/* Chat Top Banner */}
+              <div className="px-5 py-3.5 border-b border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{selectedPersona.avatar}</span>
+                  <div>
+                    <div className="font-bold text-sm text-[#111827] dark:text-white">
+                      {isAr ? selectedPersona.nameAr : selectedPersona.nameEn}
                     </div>
+                    <div className="text-[11px] text-[#6B7280] dark:text-neutral-400 truncate max-w-xs sm:max-w-md">
+                      {activeTopic}
+                    </div>
+                  </div>
+                </div>
 
-                    <span className="text-[10px] text-[#9CA3AF] px-10 mt-1 font-mono">
-                      {msg.timestamp}
+                {/* Speaking Indicator */}
+                {isSpeaking && (
+                  <div className="flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    <span className="w-1.5 h-3 bg-emerald-500 rounded-full animate-soundwave-1" />
+                    <span className="w-1.5 h-4 bg-emerald-500 rounded-full animate-soundwave-2" />
+                    <span className="w-1.5 h-2 bg-emerald-500 rounded-full animate-soundwave-3" />
+                    <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 ms-1">
+                      {isAr ? 'يتحدث...' : 'Speaking...'}
                     </span>
                   </div>
-                );
-              })}
+                )}
+              </div>
 
-              {isLoading && (
-                <div className="flex items-center gap-2 text-xs text-[#6B7280] dark:text-neutral-400 p-2">
-                  <div className="w-2 h-2 rounded-full bg-[#0A3E31] dark:bg-emerald-400 animate-ping" />
-                  <span>
-                    {isAr
-                      ? `${selectedPersona.nameAr} يفكر في الرد...`
-                      : `${selectedPersona.nameEn} is contemplating rebuttal...`}
-                  </span>
-                </div>
-              )}
+              {/* Messages Scroll Area */}
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+                {messages.map((msg) => {
+                  const isUser = msg.sender === 'user';
+                  return (
+                    <div
+                      key={msg.id}
+                      className={`flex flex-col ${
+                        isUser ? 'items-end' : 'items-start'
+                      }`}
+                    >
+                      <div className="flex items-end gap-2 max-w-[85%] sm:max-w-[78%]">
+                        {!isUser && (
+                          <div className="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center shrink-0 text-base mb-1">
+                            {selectedPersona.avatar}
+                          </div>
+                        )}
 
-              <div ref={messagesEndRef} />
-            </div>
+                        <div
+                          className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
+                            isUser
+                              ? 'bg-[#0A3E31] text-white rounded-br-xs dark:bg-emerald-700'
+                              : 'bg-[#F4EFE6] dark:bg-[#122420] text-[#1F2937] dark:text-neutral-100 rounded-bl-xs border border-[#0A3E31]/10 dark:border-white/5'
+                          }`}
+                        >
+                          {msg.text}
+                        </div>
 
-            {/* Chat Input Bar */}
-            <form
-              onSubmit={handleSendMessage}
-              className="p-3 sm:p-4 border-t border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center gap-2"
-            >
-              <textarea
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSendMessage();
-                  }
-                }}
-                rows={1}
-                placeholder={t.userTurnPlaceholder}
-                className="flex-1 max-h-24 resize-none px-4 py-2.5 rounded-xl border border-[#0A3E31]/20 dark:border-white/10 bg-white dark:bg-[#0E1B17] text-xs sm:text-sm text-[#111827] dark:text-white placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#0A3E31] dark:focus:ring-emerald-500"
-              />
+                        {isUser && (
+                          <div className="w-8 h-8 rounded-full bg-[#C8A366] text-white font-bold flex items-center justify-center shrink-0 text-xs mb-1">
+                            {isAr ? 'أنت' : 'You'}
+                          </div>
+                        )}
+                      </div>
 
-              <button
-                type="submit"
-                disabled={isLoading || !inputMessage.trim()}
-                className="p-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer shrink-0 shadow-sm"
+                      <span className="text-[10px] text-[#9CA3AF] px-10 mt-1 font-mono">
+                        {msg.timestamp}
+                      </span>
+                    </div>
+                  );
+                })}
+
+                {isLoading && (
+                  <div className="flex items-center gap-2 text-xs text-[#6B7280] dark:text-neutral-400 p-2">
+                    <div className="w-2 h-2 rounded-full bg-[#0A3E31] dark:bg-emerald-400 animate-ping" />
+                    <span>
+                      {isAr
+                        ? `${selectedPersona.nameAr} يفكر في الرد...`
+                        : `${selectedPersona.nameEn} is contemplating rebuttal...`}
+                    </span>
+                  </div>
+                )}
+
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Chat Input Bar */}
+              <form
+                onSubmit={handleSendMessage}
+                className="p-3 sm:p-4 border-t border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center gap-2"
               >
-                <Send className="w-4 h-4 rtl:rotate-180" />
-              </button>
-            </form>
-          </div>
+                <textarea
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendMessage();
+                    }
+                  }}
+                  rows={1}
+                  placeholder={t.userTurnPlaceholder}
+                  className="flex-1 max-h-24 resize-none px-4 py-2.5 rounded-xl border border-[#0A3E31]/20 dark:border-white/10 bg-white dark:bg-[#0E1B17] text-xs sm:text-sm text-[#111827] dark:text-white placeholder-[#9CA3AF] focus:outline-none focus:ring-2 focus:ring-[#0A3E31] dark:focus:ring-emerald-500"
+                />
+
+                <button
+                  type="submit"
+                  disabled={isLoading || !inputMessage.trim()}
+                  className="p-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer shrink-0 shadow-sm"
+                >
+                  <Send className="w-4 h-4 rtl:rotate-180" />
+                </button>
+              </form>
+            </div>
+          )}
 
           {/* Live Evaluation & Coaching Drawer (4 cols on lg) */}
           <div className="lg:col-span-4 flex flex-col gap-4">
@@ -547,13 +691,27 @@ export default function SimulatorView({
                   <ShieldCheck className="w-4 h-4" />
                   <span>{t.evaluationPanel}</span>
                 </div>
-                <span className="text-[10px] font-mono text-[#6B7280] dark:text-neutral-400">
-                  {isAr ? 'تقييم فوري' : 'Live Rubric'}
+                <span
+                  className={`text-[10px] text-[#6B7280] dark:text-neutral-400 ${
+                    isVoiceSession && !hasVoiceEvaluation ? '' : 'font-mono'
+                  }`}
+                >
+                  {isVoiceSession && !hasVoiceEvaluation
+                    ? isAr
+                      ? 'بانتظار ردك الأول'
+                      : 'Awaiting your first answer'
+                    : isAr
+                      ? 'تقييم فوري'
+                      : 'Live Rubric'}
                 </span>
               </div>
 
               {/* Rubric Bars */}
-              <div className="space-y-4">
+              <div
+                className={`space-y-4 transition-opacity duration-500 ${
+                  isVoiceSession && !hasVoiceEvaluation ? 'opacity-40' : ''
+                }`}
+              >
                 {/* 1. Strength */}
                 <div>
                   <div className="flex items-center justify-between text-xs mb-1">

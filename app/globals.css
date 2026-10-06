@@ -65,3 +65,52 @@
 .animate-soundwave-5 {
   animation: soundwave 1s ease-in-out infinite 0.8s;
 }
+
+/* ElevenLabs voice widget: anchored inside the simulator's voice stage instead of
+   floating over the page. Rules on the host element override the widget's own
+   `:host { position: fixed }`; its `transform` keeps inner fixed layers inside the stage.
+   The --el-* tokens follow the site theme (the dashboard palette is the fallback). */
+.burhan-voice-stage elevenlabs-convai {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  font-family: var(--font-cairo);
+  --el-overlay-padding: 16px;
+  --el-button-radius: 12px;
+  --el-input-radius: 12px;
+  --el-bubble-radius: 16px;
+  --el-sheet-radius: 24px;
+  --el-base: #ffffff;
+  --el-base-hover: #fbf9f4;
+  --el-base-active: #f4efe6;
+  --el-base-border: #e3e9e6;
+  --el-base-subtle: #6b7280;
+  --el-base-primary: #1f2937;
+  --el-base-error: #e11d48;
+  --el-accent: #0a3e31;
+  --el-accent-hover: #083227;
+  --el-accent-active: #062a21;
+  --el-accent-border: #0a3e31;
+  --el-accent-subtle: #c8a366;
+  --el-accent-primary: #ffffff;
+}
+
+/* Same condition as Tailwind v4's default `dark:` variant (prefers-color-scheme),
+   so the widget always matches the rest of the page. */
+@media (prefers-color-scheme: dark) {
+  .burhan-voice-stage elevenlabs-convai {
+    --el-base: #0e1b17;
+    --el-base-hover: #122420;
+    --el-base-active: #17302a;
+    --el-base-border: #1f3530;
+    --el-base-subtle: #9ca3af;
+    --el-base-primary: #e5e7eb;
+    --el-base-error: #f87171;
+    --el-accent: #059669;
+    --el-accent-hover: #10b981;
+    --el-accent-active: #047857;
+    --el-accent-border: #34d399;
+    --el-accent-subtle: #6ee7b7;
+    --el-accent-primary: #ffffff;
+  }
+}
