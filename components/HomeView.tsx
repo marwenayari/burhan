@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { Language, DoubtItem } from '@/lib/types';
-import { TRANSLATIONS } from '@/lib/data/translations';
-import { DOUBTS_DATA, SKEPTIC_PERSONAS } from '@/lib/data/doubts';
+import React from "react";
+import Image from "next/image";
+import { Language, DoubtItem } from "@/lib/types";
+import { TRANSLATIONS } from "@/lib/data/translations";
+import { DOUBTS_DATA, SKEPTIC_PERSONAS } from "@/lib/data/doubts";
 import {
   Compass,
   MessageSquareCode,
@@ -18,7 +18,7 @@ import {
   Users,
   Brain,
   Quote,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface HomeViewProps {
   language: Language;
@@ -33,7 +33,7 @@ export default function HomeView({
   onSelectDoubt,
   onSelectPersonaForSimulator,
 }: HomeViewProps) {
-  const isAr = language === 'ar';
+  const isAr = language === "ar";
   const t = TRANSLATIONS[language];
   const featuredDoubt = DOUBTS_DATA[0]; // Problem of evil & suffering
 
@@ -46,35 +46,43 @@ export default function HomeView({
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A3E31]/10 dark:bg-emerald-500/10 border border-[#0A3E31]/20 dark:border-emerald-500/20 text-xs font-semibold text-[#0A3E31] dark:text-emerald-300 mb-6">
             <Sparkles className="w-3.5 h-3.5 text-[#C8A366]" />
             <span className="font-['Amiri',serif] text-sm">
-              « بَلْ نَقْذِفُ بِالْحَقِّ عَلَى الْبَاطِلِ فَيَدْمَغُهُ فَإِذَا هُوَ زَاهِقٌ »
+              « بَلْ نَقْذِفُ بِالْحَقِّ عَلَى الْبَاطِلِ فَيَدْمَغُهُ فَإِذَا
+              هُوَ زَاهِقٌ »
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A3E31] dark:text-emerald-300 tracking-tight leading-[1.2] mb-6 font-['Cairo',sans-serif]">
             {isAr ? (
               <>
-                منصة <span className="text-[#C8A366] dark:text-[#E2C799]">برهان</span> الذكية
+                منصة{" "}
+                <span className="text-[#C8A366] dark:text-[#E2C799]">
+                  برهان
+                </span>{" "}
+                الذكية
                 <br />
                 لترسيخ اليقين وتفنيد الشبهات
               </>
             ) : (
               <>
                 Empowering Certainty with <br />
-                <span className="text-[#C8A366] dark:text-[#E2C799]">Burhan AI</span> Apologetics
+                <span className="text-[#C8A366] dark:text-[#E2C799]">
+                  Burhan AI
+                </span>{" "}
+                Apologetics
               </>
             )}
           </h1>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#4B5563] dark:text-neutral-300 leading-relaxed mb-8">
             {isAr
-              ? 'البيئة التفاعلية الأولى التي تجمع بين أصول الاستدلال الشرعي الرصين والبراهين العقلية الحديثة، مع محاكي حواري ذكي يدرّبك على مناظرة مختلف أنماط التشكيك.'
-              : 'The comprehensive intellectual sanctuary unifying rigorous classical Islamic scholarship with modern philosophical proofs and an adaptive AI dialogue simulator.'}
+              ? "البيئة التفاعلية الأولى التي تجمع بين أصول الاستدلال الشرعي الرصين والبراهين العقلية الحديثة، مع محاكي حواري ذكي يدرّبك على مناظرة مختلف أنماط التشكيك."
+              : "The comprehensive intellectual sanctuary unifying rigorous classical Islamic scholarship with modern philosophical proofs and an adaptive AI dialogue simulator."}
           </p>
 
           {/* Primary Action Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
-              onClick={() => onNavigate('simulator')}
+              onClick={() => onNavigate("simulator")}
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-[#0A3E31]/20 hover:shadow-xl transition-all cursor-pointer group"
             >
               <MessageSquareCode className="w-4 h-4 text-[#C8A366] dark:text-[#E2C799]" />
@@ -87,7 +95,7 @@ export default function HomeView({
             </button>
 
             <button
-              onClick={() => onNavigate('explore')}
+              onClick={() => onNavigate("explore")}
               className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/20 dark:border-white/10 hover:border-[#0A3E31] text-[#0A3E31] dark:text-neutral-200 font-semibold text-sm shadow-sm transition-all cursor-pointer"
             >
               <Compass className="w-4 h-4" />
@@ -97,7 +105,7 @@ export default function HomeView({
         </div>
 
         {/* Hero Background Image with Scrim */}
-        <div className="relative w-full h-48 sm:h-72 lg:h-96 mt-4 overflow-hidden border-t border-[#0A3E31]/10 dark:border-white/10">
+        {/* <div className="relative w-full h-48 sm:h-72 lg:h-96 mt-4 overflow-hidden border-t border-[#0A3E31]/10 dark:border-white/10">
           <Image
             src="/images/burhan_hero.jpg"
             alt="Burhan AI Modern Islamic Sanctuary"
@@ -107,34 +115,34 @@ export default function HomeView({
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FBF9F4] dark:from-[#0A1210] via-transparent to-transparent" />
-        </div>
+        </div> */}
       </section>
 
       {/* Quantitative Rigor Stats Row (Anti-Slop Clean Design) */}
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
-            value: '1,200+',
-            labelAr: 'شبهة مفندة وموثقة',
-            labelEn: 'Documented Doubts',
+            value: "1,200+",
+            labelAr: "شبهة مفندة وموثقة",
+            labelEn: "Documented Doubts",
             icon: ShieldCheck,
           },
           {
-            value: '3',
-            labelAr: 'نماذج محاكاة ذكية للمشككين',
-            labelEn: 'Adaptive Skeptic Personas',
+            value: "3",
+            labelAr: "نماذج محاكاة ذكية للمشككين",
+            labelEn: "Adaptive Skeptic Personas",
             icon: Brain,
           },
           {
-            value: '98.6%',
-            labelAr: 'دقة الاستدلال والتوثيق',
-            labelEn: 'Citation Reliability',
+            value: "98.6%",
+            labelAr: "دقة الاستدلال والتوثيق",
+            labelEn: "Citation Reliability",
             icon: CheckCircle2,
           },
           {
-            value: '45,000+',
-            labelAr: 'طالب علم وباحث متدرب',
-            labelEn: 'Scholars & Trainees',
+            value: "45,000+",
+            labelAr: "طالب علم وباحث متدرب",
+            labelEn: "Scholars & Trainees",
             icon: Users,
           },
         ].map((stat, idx) => {
@@ -162,12 +170,14 @@ export default function HomeView({
       <section>
         <div className="text-center max-w-2xl mx-auto mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-[#0A3E31] dark:text-emerald-300 mb-2">
-            {isAr ? 'محاكي الحوار مع أنماط المشككين' : 'The Dialogue Simulator Personas'}
+            {isAr
+              ? "محاكي الحوار مع أنماط المشككين"
+              : "The Dialogue Simulator Personas"}
           </h2>
           <p className="text-sm text-[#4B5563] dark:text-neutral-400">
             {isAr
-              ? 'تدرّب على مقارعة الحجة بالحجة أمام 3 شخصيات مختلفة صُممت لاختبار عمق علمك وصبرك.'
-              : 'Refine your dialectic poise against three distinct psychological archetypes designed to test both depth and composure.'}
+              ? "تدرّب على مقارعة الحجة بالحجة أمام 3 شخصيات مختلفة صُممت لاختبار عمق علمك وصبرك."
+              : "Refine your dialectic poise against three distinct psychological archetypes designed to test both depth and composure."}
           </p>
         </div>
 
@@ -197,12 +207,14 @@ export default function HomeView({
                 </p>
 
                 <div className="space-y-1.5 pt-3 border-t border-black/5 dark:border-white/5 mb-5 text-[11px] text-[#6B7280] dark:text-neutral-400">
-                  {(isAr ? persona.traitsAr : persona.traitsEn).map((trait, i) => (
-                    <div key={i} className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0A3E31] dark:bg-emerald-400 shrink-0" />
-                      <span>{trait}</span>
-                    </div>
-                  ))}
+                  {(isAr ? persona.traitsAr : persona.traitsEn).map(
+                    (trait, i) => (
+                      <div key={i} className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0A3E31] dark:bg-emerald-400 shrink-0" />
+                        <span>{trait}</span>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -212,7 +224,9 @@ export default function HomeView({
               >
                 <MessageSquareCode className="w-4 h-4" />
                 <span>
-                  {isAr ? `بدء محاورة ${persona.nameAr}` : `Debate ${persona.nameEn}`}
+                  {isAr
+                    ? `بدء محاورة ${persona.nameAr}`
+                    : `Debate ${persona.nameEn}`}
                 </span>
               </button>
             </div>
@@ -227,10 +241,16 @@ export default function HomeView({
             <div className="space-y-3 max-w-3xl text-start">
               <div className="flex items-center gap-2 text-xs font-bold text-[#C8A366] dark:text-[#E2C799] uppercase tracking-wider">
                 <Sparkles className="w-4 h-4" />
-                <span>{isAr ? 'شبهة الأسبوع المختارة للمدارسة' : 'Featured Doubt of the Week'}</span>
+                <span>
+                  {isAr
+                    ? "شبهة الأسبوع المختارة للمدارسة"
+                    : "Featured Doubt of the Week"}
+                </span>
                 <span>·</span>
                 <span className="text-[#0A3E31] dark:text-emerald-400">
-                  {isAr ? featuredDoubt.categoryNameAr : featuredDoubt.categoryNameEn}
+                  {isAr
+                    ? featuredDoubt.categoryNameAr
+                    : featuredDoubt.categoryNameEn}
                 </span>
               </div>
 
@@ -243,12 +263,21 @@ export default function HomeView({
               </p>
 
               <div className="flex items-center gap-4 text-xs text-[#6B7280] dark:text-neutral-400 pt-1">
-                <span>{isAr ? 'درجة الصعوبة: ' : 'Difficulty: '}{isAr ? featuredDoubt.difficultyAr : featuredDoubt.difficultyEn}</span>
+                <span>
+                  {isAr ? "درجة الصعوبة: " : "Difficulty: "}
+                  {isAr
+                    ? featuredDoubt.difficultyAr
+                    : featuredDoubt.difficultyEn}
+                </span>
                 <span>·</span>
-                <span>{featuredDoubt.readTimeMin} {isAr ? 'دقائق قراءة' : 'min read'}</span>
+                <span>
+                  {featuredDoubt.readTimeMin}{" "}
+                  {isAr ? "دقائق قراءة" : "min read"}
+                </span>
                 <span>·</span>
                 <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-                  {featuredDoubt.confidenceScore}% {isAr ? 'توثيق قطعي' : 'Verified'}
+                  {featuredDoubt.confidenceScore}%{" "}
+                  {isAr ? "توثيق قطعي" : "Verified"}
                 </span>
               </div>
             </div>
@@ -257,7 +286,9 @@ export default function HomeView({
               onClick={() => onSelectDoubt(featuredDoubt)}
               className="px-6 py-3.5 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer shrink-0 whitespace-nowrap"
             >
-              {isAr ? 'قراءة الرد والتحليل البرهاني' : 'Examine Verified Rebuttal'}
+              {isAr
+                ? "قراءة الرد والتحليل البرهاني"
+                : "Examine Verified Rebuttal"}
             </button>
           </div>
         </section>
@@ -271,27 +302,27 @@ export default function HomeView({
           </h2>
           <p className="text-sm text-[#4B5563] dark:text-neutral-400">
             {isAr
-              ? 'نعتمد في منصة برهان على منهج علمي متكامل يجمع بين الثبات على الوحي والخطاب العقلي المقنع.'
-              : 'Our epistemological framework combines uncompromised adherence to revelation with rational dialectical proof.'}
+              ? "نعتمد في منصة برهان على منهج علمي متكامل يجمع بين الثبات على الوحي والخطاب العقلي المقنع."
+              : "Our epistemological framework combines uncompromised adherence to revelation with rational dialectical proof."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              num: '01',
+              num: "01",
               title: t.methodology1Title,
               desc: t.methodology1Desc,
               icon: BookOpen,
             },
             {
-              num: '02',
+              num: "02",
               title: t.methodology2Title,
               desc: t.methodology2Desc,
               icon: Brain,
             },
             {
-              num: '03',
+              num: "03",
               title: t.methodology3Title,
               desc: t.methodology3Desc,
               icon: ShieldCheck,
@@ -328,7 +359,9 @@ export default function HomeView({
         <div className="flex items-center gap-3 mb-6">
           <Quote className="w-6 h-6 text-[#C8A366]" />
           <h3 className="text-xl font-bold text-[#0A3E31] dark:text-emerald-400">
-            {isAr ? 'أصداء وتزكيات الباحثين والمحققين' : 'Academic Endorsements & Peer Reviews'}
+            {isAr
+              ? "أصداء وتزكيات الباحثين والمحققين"
+              : "Academic Endorsements & Peer Reviews"}
           </h3>
         </div>
 
@@ -336,13 +369,15 @@ export default function HomeView({
           <div className="p-5 rounded-2xl bg-[#FBF9F4] dark:bg-[#0A1210] border border-[#0A3E31]/10 dark:border-white/5">
             <p className="text-xs sm:text-sm italic text-[#374151] dark:text-neutral-300 leading-relaxed mb-4">
               {isAr
-                ? '«تمثل منصة برهان نقلة نوعية في أدوات الدعوة المعاصرة؛ فالمحاكي الحواري يُكسب الطالب ملكة حقيقية في سرعة استحضار البرهان والتحلي بأسلوب الحكمة واللين القرآني.»'
+                ? "«تمثل منصة برهان نقلة نوعية في أدوات الدعوة المعاصرة؛ فالمحاكي الحواري يُكسب الطالب ملكة حقيقية في سرعة استحضار البرهان والتحلي بأسلوب الحكمة واللين القرآني.»"
                 : '"Burhan AI represents a transformative leap in contemporary Islamic apologetics. The dialogue simulator builds visceral poise, rapid evidence recall, and steadfast Quranic grace under debate pressure."'}
             </p>
             <div className="text-xs font-bold text-[#0A3E31] dark:text-emerald-400">
-              {isAr ? 'د. عبد الله الشهري' : 'Dr. Abdullah Al-Shehri'}
+              {isAr ? "د. عبد الله الشهري" : "Dr. Abdullah Al-Shehri"}
               <div className="text-[11px] font-normal text-[#6B7280] dark:text-neutral-400">
-                {isAr ? 'أستاذ العقيدة ومقارنة الأديان، الرياض' : 'Professor of Comparative Theology, Riyadh'}
+                {isAr
+                  ? "أستاذ العقيدة ومقارنة الأديان، الرياض"
+                  : "Professor of Comparative Theology, Riyadh"}
               </div>
             </div>
           </div>
@@ -350,13 +385,15 @@ export default function HomeView({
           <div className="p-5 rounded-2xl bg-[#FBF9F4] dark:bg-[#0A1210] border border-[#0A3E31]/10 dark:border-white/5">
             <p className="text-xs sm:text-sm italic text-[#374151] dark:text-neutral-300 leading-relaxed mb-4">
               {isAr
-                ? '«التوثيق الدقيق للأحاديث والمخطوطات في بنك الشبهات ينقل الحوار من الجدل العاطفي إلى البراهين التاريخية والمادية التي لا تقبل الرد.»'
+                ? "«التوثيق الدقيق للأحاديث والمخطوطات في بنك الشبهات ينقل الحوار من الجدل العاطفي إلى البراهين التاريخية والمادية التي لا تقبل الرد.»"
                 : '"The exhaustive manuscript collation and hadith verification transform debates from emotional dialectic into unassailable historiographical facts."'}
             </p>
             <div className="text-xs font-bold text-[#0A3E31] dark:text-emerald-400">
-              {isAr ? 'د. مروان التونسي' : 'Dr. Marwan Al-Tunisi'}
+              {isAr ? "د. مروان التونسي" : "Dr. Marwan Al-Tunisi"}
               <div className="text-[11px] font-normal text-[#6B7280] dark:text-neutral-400">
-                {isAr ? 'باحث في علم المخطوطات والحديث الشريف، الزيتونة' : 'Researcher in Hadith Sciences & Manuscripts, Ez-Zitouna'}
+                {isAr
+                  ? "باحث في علم المخطوطات والحديث الشريف، الزيتونة"
+                  : "Researcher in Hadith Sciences & Manuscripts, Ez-Zitouna"}
               </div>
             </div>
           </div>
