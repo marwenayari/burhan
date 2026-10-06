@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   SkepticPersonaId,
   Language,
@@ -10,8 +10,9 @@ import {
 import { SKEPTIC_PERSONAS, DOUBTS_DATA } from '@/lib/data/doubts';
 import { TRANSLATIONS } from '@/lib/data/translations';
 import {
-  buildDebateVariables,
   clampScore,
+  DEBATE_TOPICS,
+  PERSONA_DIFFICULTY,
   DebateEvaluationToolParams,
 } from '@/lib/elevenlabs';
 import VoiceDebateStage from '@/components/VoiceDebateStage';
@@ -76,7 +77,7 @@ export default function SimulatorView({
   const [selectedPersonaId, setSelectedPersonaId] =
     useState<SkepticPersonaId>(initialPersonaId);
   const [selectedTopic, setSelectedTopic] = useState<string>(
-    initialTopic || (isAr ? 'شبهة وجود الشر والألم في العالم وعلاقته بالحكمة الإلهية' : 'The Problem of Evil vs Divine Wisdom')
+    initialTopic || (isAr ? DEBATE_TOPICS[0].ar : DEBATE_TOPICS[0].en)
   );
   const [customTopic, setCustomTopic] = useState('');
   const [sessionMode, setSessionMode] = useState<SessionMode>('voice');
@@ -111,16 +112,8 @@ export default function SimulatorView({
   const activeTopic = customTopic.trim() || selectedTopic;
   const isVoiceSession = isSessionActive && sessionMode === 'voice';
 
-  const voiceVariables = useMemo(
-    () =>
-      buildDebateVariables({
-        persona: selectedPersona,
-        topic: activeTopic,
-        language,
-        openingLine: getOpeningLine(selectedPersona.id, activeTopic, isAr),
-      }),
-    [selectedPersona, activeTopic, language, isAr]
-  );
+  // Debate difficulty follows the selected persona (see the persona badges)
+  const selectedDifficulty = PERSONA_DIFFICULTY[selectedPersonaId];
 
   // Called by the voice agent through the `update_debate_evaluation` client tool
   const handleVoiceEvaluation = useCallback((params: DebateEvaluationToolParams) => {
@@ -133,29 +126,6 @@ export default function SimulatorView({
       improvementsText: params.improvement_feedback || prev.improvementsText,
     }));
   }, []);
-
-  const presetTopics = [
-    {
-      id: 'evil',
-      ar: 'شبهة وجود الشر والألم في العالم وعلاقته بالحكمة الإلهية',
-      en: 'The Problem of Evil & Suffering vs Divine Wisdom',
-    },
-    {
-      id: 'hadith',
-      ar: 'شبهة تدوين السنة النبوية وتأخر كتابتها',
-      en: 'Preservation & Historical Inscription of Hadith',
-    },
-    {
-      id: 'women',
-      ar: 'شبهة نظام الميراث وقضايا المرأة في التشريع',
-      en: 'Islamic Inheritance and Women’s Financial Rights',
-    },
-    {
-      id: 'science',
-      ar: 'شبهة التعارض بين العلم التجريبي والإيمان بالخالق',
-      en: 'Science, Reason, and Divine Creation',
-    },
-  ];
 
   // Auto-scroll chat
   useEffect(() => {
@@ -420,7 +390,7 @@ export default function SimulatorView({
               {t.selectTopic}:
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-              {presetTopics.map((top) => {
+              {DEBATE_TOPICS.map((top) => {
                 const topicText = isAr ? top.ar : top.en;
                 const isSelected = selectedTopic === topicText && !customTopic;
                 return (
@@ -564,7 +534,7 @@ export default function SimulatorView({
               language={language}
               persona={selectedPersona}
               topic={activeTopic}
-              variables={voiceVariables}
+              difficulty={selectedDifficulty}
               onEvaluation={handleVoiceEvaluation}
             />
           ) : (

@@ -7,6 +7,8 @@ import { Language, SkepticPersona } from '@/lib/types';
 import {
   ELEVENLABS_AGENT_ID,
   ELEVENLABS_WIDGET_SRC,
+  buildDebateVariables,
+  DebateDifficulty,
   DebateDynamicVariables,
   DebateEvaluationToolParams,
 } from '@/lib/elevenlabs';
@@ -14,6 +16,7 @@ import {
 interface ConvaiCallEvent extends Event {
   detail: {
     config: {
+      dynamicVariables?: Record<string, string | number | boolean>;
       clientTools?: Record<string, (params: Record<string, unknown>) => unknown>;
     };
   };
@@ -23,7 +26,7 @@ interface VoiceDebateStageProps {
   language: Language;
   persona: SkepticPersona;
   topic: string;
-  variables: DebateDynamicVariables;
+  difficulty: DebateDifficulty;
   onEvaluation: (params: DebateEvaluationToolParams) => void;
   className?: string;
 }
@@ -37,7 +40,7 @@ export default function VoiceDebateStage({
   language,
   persona,
   topic,
-  variables,
+  difficulty,
   onEvaluation,
   className = '',
 }: VoiceDebateStageProps) {
@@ -50,9 +53,19 @@ export default function VoiceDebateStage({
     onEvaluationRef.current = onEvaluation;
   }, [onEvaluation]);
 
+  const variables: DebateDynamicVariables = useMemo(
+    () => buildDebateVariables({ persona, topic, difficulty }),
+    [persona, topic, difficulty]
+  );
   const dynamicVariables = useMemo(() => JSON.stringify(variables), [variables]);
+  const variablesRef = useRef(variables);
 
-  // Fired by the widget right before it connects; lets us register client tools.
+  useEffect(() => {
+    variablesRef.current = variables;
+  }, [variables]);
+
+  // Fired by the widget right before it connects, with the session config it is about to use.
+  // Variables are re-applied here so the call always starts with the current selection.
   useEffect(() => {
     const widget = widgetRef.current;
     if (!widget) return;
@@ -60,6 +73,7 @@ export default function VoiceDebateStage({
     const handleCall = (event: Event) => {
       setHasCallStarted(true);
       const { config } = (event as ConvaiCallEvent).detail;
+      config.dynamicVariables = { ...config.dynamicVariables, ...variablesRef.current };
       config.clientTools = {
         ...config.clientTools,
         update_debate_evaluation: (params) => {

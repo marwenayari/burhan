@@ -86,7 +86,7 @@ Two stages:
    - Left (8 cols): text chat **or** the embedded voice stage.
    - Right (4 cols): live rubric (argument strength, source quality, manner), coach feedback, and per-persona tactical advice. Shared by both modes.
 
-The persona-specific opening line (`getOpeningLine`) is used as the first chat message in text mode and passed to the voice agent as `opening_line`.
+In text mode, the persona's scripted opening line (`getOpeningLine`) is the first chat message. Preset topics and their stable ids (`DEBATE_TOPICS`) live in `lib/elevenlabs.ts`.
 
 **Text mode turn loop:**
 
@@ -96,7 +96,7 @@ user types → POST /api/simulator { personaId, messages, topic, language }
           → append skeptic message, update rubric, optional browser TTS (speechSynthesis)
 ```
 
-**Voice mode:** the ElevenLabs agent runs the whole conversation. The rubric updates when the agent calls the `update_debate_evaluation` client tool.
+**Voice mode:** the ElevenLabs agent runs the whole conversation. It receives `{ mode, skeptic_type, topic, difficulty }`, and the rubric updates when it calls the `update_debate_evaluation` client tool.
 
 ---
 
