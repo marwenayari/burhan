@@ -76,6 +76,12 @@ Topic ids are matched from the Arabic or English label of a preset topic, or fro
 | `quran_preservation`    | Integrity of the Quranic text                   |
 | `spread_by_sword`       | "Islam spread by the sword" and freedom of belief |
 
+Clicking a selected persona or topic unselects it. In voice mode, anything left unselected is sent as an empty string, and the agent asks the user for it. Text mode requires both, so its start button stays disabled until both are chosen. Keys are never omitted, because a prompt variable with no value stops the call from starting.
+
+```json
+{ "mode": "debate", "skeptic_type": "", "topic": "", "difficulty": "" }
+```
+
 Example payload, captured from the real `conversation_initiation_client_data` message sent to ElevenLabs:
 
 ```json
@@ -143,6 +149,7 @@ Your only job is to understand the requested mode and route the conversation to 
 ## Routing rules
 - If mode is "debate", route to Debate Training immediately. Do not ask the user to choose a mode, and do not restate the settings.
 - If a topic is provided, it is the debate topic. Do not ask for a topic.
+- If mode is "debate" but skeptic_type or topic is empty, still route to Debate Training; it will ask the user for them.
 - If the mode is missing or unclear, ask once, briefly, in Arabic, whether the user wants:
   - الرد على شبهة أو سؤال
   - التدريب على مناظرة ومحاورة مشكك
@@ -183,6 +190,9 @@ The topic is either one of these ids, or the user's own topic written in natural
 - quran_preservation: integrity of the Quranic text from alteration
 - spread_by_sword: "Islam spread by the sword" and freedom of belief
 Never say the id aloud. Refer to the topic in natural words.
+
+## Missing settings
+If skeptic_type is empty, ask the user briefly which skeptic to play: المشكك العنيد (stubborn), المشكك المتهرب (evasive) or المشكك طالب المعرفة (knowledge_seeker). If difficulty is empty, use the default for that skeptic (stubborn = hard, evasive = medium, knowledge_seeker = easy). If topic is empty, ask the user which objection they want to debate. Ask everything in a single short question, then start.
 
 ## Rules
 - Open the debate with your first challenge on the topic, in character.

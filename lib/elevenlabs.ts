@@ -86,13 +86,15 @@ export type DebateTopic = DebateTopicId | (string & {});
 /**
  * Dynamic variables sent to the ElevenLabs agent when a voice session starts.
  * Every key here must be declared in the agent (Agent → Dynamic variables) —
- * see docs/VOICE_DEBATE.md.
+ * see docs/VOICE_DEBATE.md. An empty string means the user left it unselected
+ * and will say it to the agent; keys are never omitted, because a variable
+ * referenced in the prompt without a value stops the call from starting.
  */
 export interface DebateDynamicVariables {
   mode: 'debate';
-  skeptic_type: SkepticType;
+  skeptic_type: SkepticType | '';
   topic: DebateTopic;
-  difficulty: DebateDifficulty;
+  difficulty: DebateDifficulty | '';
 }
 
 export function buildDebateVariables({
@@ -100,15 +102,15 @@ export function buildDebateVariables({
   topic,
   difficulty,
 }: {
-  persona: SkepticPersona;
+  persona: SkepticPersona | null;
   topic: string;
-  difficulty: DebateDifficulty;
+  difficulty: DebateDifficulty | null;
 }): DebateDynamicVariables {
   return {
     mode: 'debate',
-    skeptic_type: PERSONA_SKEPTIC_TYPE[persona.id],
-    topic: toDebateTopic(topic),
-    difficulty,
+    skeptic_type: persona ? PERSONA_SKEPTIC_TYPE[persona.id] : '',
+    topic: topic.trim() ? toDebateTopic(topic) : '',
+    difficulty: difficulty ?? '',
   };
 }
 

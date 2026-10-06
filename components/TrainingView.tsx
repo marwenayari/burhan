@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import confetti from 'canvas-confetti';
-import { Language, UserStats } from '@/lib/types';
-import { TRANSLATIONS } from '@/lib/data/translations';
-import { DOUBTS_DATA } from '@/lib/data/doubts';
+import React, { useState } from "react";
+import confetti from "canvas-confetti";
+import { Language, UserStats } from "@/lib/types";
+import { TRANSLATIONS } from "@/lib/data/translations";
+import { DOUBTS_DATA } from "@/lib/data/doubts";
 import {
   Award,
   BookOpen,
@@ -18,7 +18,7 @@ import {
   X,
   Download,
   Share2,
-} from 'lucide-react';
+} from "lucide-react";
 
 interface TrainingViewProps {
   language: Language;
@@ -31,7 +31,7 @@ export default function TrainingView({
   onNavigateToSimulator,
   onNavigateToExplore,
 }: TrainingViewProps) {
-  const isAr = language === 'ar';
+  const isAr = language === "ar";
   const t = TRANSLATIONS[language];
 
   const [stats, setStats] = useState<UserStats>({
@@ -40,37 +40,39 @@ export default function TrainingView({
     totalTrainingHours: 12.5,
     rebuttalScoreAverage: 89.2,
     currentStreakDays: 7,
-    rankAr: 'باحث برهاني متمكن',
-    rankEn: 'Certified Apologetic Scholar',
+    rankAr: "باحث برهاني متمكن",
+    rankEn: "Certified Apologetic Scholar",
     levelProgress: 76,
-    completedChallenges: ['ch-1', 'ch-2'],
+    completedChallenges: ["ch-1", "ch-2"],
     earnedBadges: [
       {
-        id: 'badge-1',
-        titleAr: 'حامي الثغور',
-        titleEn: 'Guardian of Truth',
-        descAr: 'إكمال 10 مناظرات بنجاح دون النزول عن 80% في قوة الحجة.',
-        descEn: 'Completed 10 dialogues maintaining above 80% argument rigor.',
-        icon: '🛡️',
-        unlockedAt: '2026-09-28',
+        id: "badge-1",
+        titleAr: "حامي الثغور",
+        titleEn: "Guardian of Truth",
+        descAr: "إكمال 10 مناظرات بنجاح دون النزول عن 80% في قوة الحجة.",
+        descEn: "Completed 10 dialogues maintaining above 80% argument rigor.",
+        icon: "🛡️",
+        unlockedAt: "2026-09-28",
       },
       {
-        id: 'badge-2',
-        titleAr: 'المحاور الحكيم',
-        titleEn: 'Wise Interlocutor',
-        descAr: 'تحقيق درجة كاملة 100% في أدب ولين الجانب في 5 جلسات متتالية.',
-        descEn: 'Achieved 100% in dialogue etiquette across 5 consecutive trials.',
-        icon: '🌿',
-        unlockedAt: '2026-10-01',
+        id: "badge-2",
+        titleAr: "المحاور الحكيم",
+        titleEn: "Wise Interlocutor",
+        descAr: "تحقيق درجة كاملة 100% في أدب ولين الجانب في 5 جلسات متتالية.",
+        descEn:
+          "Achieved 100% in dialogue etiquette across 5 consecutive trials.",
+        icon: "🌿",
+        unlockedAt: "2026-10-01",
       },
       {
-        id: 'badge-3',
-        titleAr: 'المتقن للدليل',
-        titleEn: 'Master of Evidence',
-        descAr: 'استحضار براهين قرآنية وحديثية موثقة في جميع الشبهات العقدية.',
-        descEn: 'Demonstrated authenticated Quranic and Hadith proofs in theological matters.',
-        icon: '📜',
-        unlockedAt: '2026-10-02',
+        id: "badge-3",
+        titleAr: "المتقن للدليل",
+        titleEn: "Master of Evidence",
+        descAr: "استحضار براهين قرآنية وحديثية موثقة في جميع الشبهات العقدية.",
+        descEn:
+          "Demonstrated authenticated Quranic and Hadith proofs in theological matters.",
+        icon: "📜",
+        unlockedAt: "2026-10-02",
       },
     ],
   });
@@ -78,12 +80,20 @@ export default function TrainingView({
   const [isCertificateOpen, setIsCertificateOpen] = useState(false);
 
   const topicProficiency = [
-    { nameAr: 'العقيدة والغيبيات', nameEn: 'Theology & Unseen', percent: 92 },
-    { nameAr: 'السنة والحديث الشريف', nameEn: 'Prophetic Sunnah', percent: 85 },
-    { nameAr: 'القرآن وعلومه', nameEn: 'Quran & Sciences', percent: 88 },
-    { nameAr: 'قضايا المرأة', nameEn: 'Women in Islam', percent: 94 },
-    { nameAr: 'العلم والفيزياء الكونية', nameEn: 'Science & Cosmology', percent: 79 },
-    { nameAr: 'التاريخ والفتوحات', nameEn: 'History & Civilization', percent: 83 },
+    { nameAr: "العقيدة والغيبيات", nameEn: "Theology & Unseen", percent: 92 },
+    { nameAr: "السنة والحديث الشريف", nameEn: "Prophetic Sunnah", percent: 85 },
+    { nameAr: "القرآن وعلومه", nameEn: "Quran & Sciences", percent: 88 },
+    { nameAr: "قضايا المرأة", nameEn: "Women in Islam", percent: 94 },
+    {
+      nameAr: "العلم والفيزياء الكونية",
+      nameEn: "Science & Cosmology",
+      percent: 79,
+    },
+    {
+      nameAr: "التاريخ والفتوحات",
+      nameEn: "History & Civilization",
+      percent: 83,
+    },
   ];
 
   const handleOpenCertificate = () => {
@@ -94,10 +104,10 @@ export default function TrainingView({
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#0A3E31', '#C8A366', '#34D399', '#D4AF37'],
+        colors: ["#0A3E31", "#C8A366", "#34D399", "#D4AF37"],
       });
     } catch (e) {
-      console.log('Confetti triggered', e);
+      console.log("Confetti triggered", e);
     }
   };
 
@@ -107,7 +117,11 @@ export default function TrainingView({
       <div>
         <div className="flex items-center gap-2 text-xs font-bold text-[#C8A366] dark:text-[#E2C799] uppercase tracking-wider mb-2">
           <Award className="w-4 h-4" />
-          <span>{isAr ? 'مسار الإتقان والاعتماد الأكاديمي' : 'Mastery & Accreditation Track'}</span>
+          <span>
+            {isAr
+              ? "مسار الإتقان والاعتماد الأكاديمي"
+              : "Mastery & Accreditation Track"}
+          </span>
         </div>
         <h1 className="text-2xl sm:text-4xl font-extrabold text-[#0A3E31] dark:text-emerald-300">
           {t.trainingTitle}
@@ -124,25 +138,25 @@ export default function TrainingView({
             label: t.doubtsMastered,
             val: stats.doubtsMastered,
             icon: BookOpen,
-            color: 'text-emerald-700 dark:text-emerald-400',
+            color: "text-emerald-700 dark:text-emerald-400",
           },
           {
             label: t.dialoguesCompleted,
             val: stats.dialoguesCompleted,
             icon: MessageSquareCode,
-            color: 'text-teal-700 dark:text-teal-400',
+            color: "text-teal-700 dark:text-teal-400",
           },
           {
             label: t.trainingHours,
             val: `${stats.totalTrainingHours}h`,
             icon: Clock,
-            color: 'text-[#C8A366] dark:text-[#E2C799]',
+            color: "text-[#C8A366] dark:text-[#E2C799]",
           },
           {
             label: t.avgScore,
             val: `${stats.rebuttalScoreAverage}%`,
             icon: Trophy,
-            color: 'text-amber-600 dark:text-amber-400',
+            color: "text-amber-600 dark:text-amber-400",
           },
         ].map((card, i) => {
           const Icon = card.icon;
@@ -209,10 +223,10 @@ export default function TrainingView({
         <div className="p-6 rounded-3xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/10 dark:border-white/10 space-y-4">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-base font-bold text-[#111827] dark:text-white">
-              {isAr ? 'مستوى الإتقان بحسب المواضيع' : 'Topic Mastery Breakdown'}
+              {isAr ? "مستوى الإتقان بحسب المواضيع" : "Topic Mastery Breakdown"}
             </h3>
             <span className="text-xs text-[#6B7280] dark:text-neutral-400 font-mono">
-              6 {isAr ? 'محاور' : 'axes'}
+              6 {isAr ? "محاور" : "axes"}
             </span>
           </div>
 
@@ -254,14 +268,18 @@ export default function TrainingView({
 
             <p className="text-xs sm:text-sm text-[#4B5563] dark:text-neutral-300 leading-relaxed mb-4">
               {isAr
-                ? 'تحدَّ نفسك للرد على قفزات المشكك المتهرب وإلزامه بالصحف المبكرة وصحيفة همام بن منبه دون فقدان الهدوء.'
-                : 'Challenge yourself to pin down the evasive skeptic with early manuscript evidence without losing dialetical composure.'}
+                ? "تحدَّ نفسك للرد على قفزات المشكك المتهرب وإلزامه بالصحف المبكرة وصحيفة همام بن منبه دون فقدان الهدوء."
+                : "Challenge yourself to pin down the evasive skeptic with early manuscript evidence without losing dialetical composure."}
             </p>
 
             <div className="p-3.5 rounded-2xl bg-[#FBF9F4] dark:bg-[#0A1210] border border-[#0A3E31]/10 dark:border-white/5 flex items-center justify-between text-xs text-[#6B7280] dark:text-neutral-400">
-              <span>{isAr ? 'المكافأة: +150 نقطة كفاءة' : 'Reward: +150 Competence Pts'}</span>
+              <span>
+                {isAr
+                  ? "المكافأة: +150 نقطة كفاءة"
+                  : "Reward: +150 Competence Pts"}
+              </span>
               <span className="font-bold text-emerald-700 dark:text-emerald-400">
-                {isAr ? 'متاح الآن' : 'Available'}
+                {isAr ? "متاح الآن" : "Available"}
               </span>
             </div>
           </div>
@@ -271,13 +289,13 @@ export default function TrainingView({
               onClick={onNavigateToSimulator}
               className="flex-1 py-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all cursor-pointer text-center"
             >
-              {isAr ? 'بدء التحدي الآن' : 'Start Challenge Now'}
+              {isAr ? "بدء التحدي الآن" : "Start Challenge Now"}
             </button>
             <button
               onClick={onNavigateToExplore}
               className="px-4 py-3 rounded-xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/20 dark:border-white/10 text-[#0A3E31] dark:text-neutral-300 text-xs font-semibold hover:border-[#0A3E31] transition-colors cursor-pointer"
             >
-              {isAr ? 'مراجعة الأدلة أولاً' : 'Study Proofs First'}
+              {isAr ? "مراجعة الأدلة أولاً" : "Study Proofs First"}
             </button>
           </div>
         </div>
@@ -305,7 +323,9 @@ export default function TrainingView({
                   {isAr ? badge.descAr : badge.descEn}
                 </div>
                 <div className="text-[10px] font-mono text-[#C8A366] dark:text-[#E2C799] mt-2">
-                  {isAr ? `تاريخ الإنجاز: ${badge.unlockedAt}` : `Achieved: ${badge.unlockedAt}`}
+                  {isAr
+                    ? `تاريخ الإنجاز: ${badge.unlockedAt}`
+                    : `Achieved: ${badge.unlockedAt}`}
                 </div>
               </div>
             </div>
@@ -331,7 +351,9 @@ export default function TrainingView({
 
             <div>
               <span className="text-xs font-bold text-[#C8A366] uppercase tracking-widest">
-                {isAr ? 'شهادة إتقان وكفاءة معتمدة' : 'Official Certificate of Competence'}
+                {isAr
+                  ? "شهادة إتقان وكفاءة معتمدة"
+                  : "Official Certificate of Competence"}
               </span>
               <h2 className="text-xl sm:text-2xl font-extrabold text-[#0A3E31] dark:text-emerald-300 mt-1 font-['Cairo',sans-serif]">
                 {t.certificateTitle}
@@ -340,32 +362,39 @@ export default function TrainingView({
 
             <p className="text-xs sm:text-sm text-[#4B5563] dark:text-neutral-300 max-w-md mx-auto leading-relaxed">
               {isAr
-                ? 'تشهد منصة برهان AI بأن الباحث قد اجتاز بنجاح مسارات التدريب والمناظرة الفكرية واستوفى معايير الاستدلال الشرعي والعقلي بدقة وموضوعية.'
-                : 'Burhan AI certifies that the scholar has completed rigorous apologetic training and satisfied academic standards in textual and rational argumentation.'}
+                ? "تشهد منصة برهان AI بأن الباحث قد اجتاز بنجاح مسارات التدريب والمناظرة الفكرية واستوفى معايير الاستدلال الشرعي والعقلي بدقة وموضوعية."
+                : "Burhan AI certifies that the scholar has completed rigorous apologetic training and satisfied academic standards in textual and rational argumentation."}
             </p>
 
             {/* Recipient Box */}
             <div className="py-4 border-y border-[#C8A366]/30">
               <div className="text-xs text-[#6B7280] dark:text-neutral-400">
-                {isAr ? 'مُنحت للباحث:' : 'Awarded To:'}
+                {isAr ? "مُنحت للباحث:" : "Awarded To:"}
               </div>
               <div className="text-xl font-bold text-[#0A3E31] dark:text-emerald-400 font-['Amiri',serif] mt-1">
-                {isAr ? 'عبد الرحمن بن أحمد الباحث' : 'Abdulrahman Ahmad'}
+                {isAr ? "طالب علم باحث" : "Scholar of Apologetics"}
               </div>
               <div className="text-xs text-[#C8A366] font-mono mt-1">
-                ID: BRH-2026-9842A · {isAr ? 'الدرجة: 89.2% (امتياز مع مرتبة الشرف)' : 'Score: 89.2% (Distinction)'}
+                ID: BRH-2026-9842A ·{" "}
+                {isAr
+                  ? "الدرجة: 89.2% (امتياز مع مرتبة الشرف)"
+                  : "Score: 89.2% (Distinction)"}
               </div>
             </div>
 
             <div className="flex items-center justify-center gap-3 pt-2">
               <button
                 onClick={() => {
-                  alert(isAr ? 'تم تنزيل الشهادة بصيغة PDF بنجاح.' : 'Certificate downloaded successfully.');
+                  alert(
+                    isAr
+                      ? "تم تنزيل الشهادة بصيغة PDF بنجاح."
+                      : "Certificate downloaded successfully.",
+                  );
                 }}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 text-white font-bold text-xs shadow-md cursor-pointer"
               >
                 <Download className="w-4 h-4" />
-                <span>{isAr ? 'تحميل الشهادة (PDF)' : 'Download PDF'}</span>
+                <span>{isAr ? "تحميل الشهادة (PDF)" : "Download PDF"}</span>
               </button>
               <button
                 onClick={() => setIsCertificateOpen(false)}

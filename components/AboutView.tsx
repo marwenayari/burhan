@@ -43,12 +43,12 @@ export default function AboutView({ language }: AboutViewProps) {
       institutionEn: "Baraheen Research Center",
     },
     {
-      nameAr: "د. مروان التونسي",
-      nameEn: "Dr. Marwan Al-Tunisi",
-      roleAr: "مستشار علوم الحديث ونقد المخطوطات",
-      roleEn: "Consultant in Hadith Sciences & Codices",
-      institutionAr: "جامعة الزيتونة المعمورة",
-      institutionEn: "Ez-Zitouna University",
+      nameAr: "أ.د. أحمد بن محمد اللهيب",
+      nameEn: "Dr. Ahmed Al-Lahib",
+      roleAr: "أستاذ العقيدة والمذاهب المعاصرة",
+      roleEn: "Professor of Creed and Contemporary Schools of Thought",
+      institutionAr: "جامعة الملك سعود",
+      institutionEn: "King Saud University",
     },
   ];
 

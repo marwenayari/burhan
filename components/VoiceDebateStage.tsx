@@ -27,9 +27,9 @@ interface ConvaiCallEvent extends Event {
 
 interface VoiceDebateStageProps {
   language: Language;
-  persona: SkepticPersona;
-  topic: string;
-  difficulty: DebateDifficulty;
+  persona: SkepticPersona | null; // null: the user will say it to the agent
+  topic: string; // empty: the user will say it to the agent
+  difficulty: DebateDifficulty | null;
   onEvaluation: (params: DebateEvaluationToolParams) => void;
   className?: string;
 }
@@ -110,13 +110,24 @@ export default function VoiceDebateStage({
       {/* Stage Top Banner */}
       <div className="px-5 py-3.5 border-b border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <span className="text-2xl">{persona.avatar}</span>
+          {persona ? (
+            <span className="text-2xl">{persona.avatar}</span>
+          ) : (
+            <Mic className="w-6 h-6 text-[#0A3E31] dark:text-emerald-400 shrink-0" />
+          )}
           <div className="min-w-0">
             <div className="font-bold text-sm text-[#111827] dark:text-white">
-              {isAr ? persona.nameAr : persona.nameEn}
+              {persona
+                ? isAr
+                  ? persona.nameAr
+                  : persona.nameEn
+                : isAr
+                  ? 'حدّد نمط المشكك صوتياً'
+                  : 'Tell the agent which skeptic'}
             </div>
             <div className="text-[11px] text-[#6B7280] dark:text-neutral-400 truncate max-w-xs sm:max-w-md">
-              {topic}
+              {topic ||
+                (isAr ? 'واذكر موضوع المناظرة للمحاور' : 'and say the debate topic')}
             </div>
           </div>
         </div>

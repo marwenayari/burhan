@@ -74,8 +74,9 @@ export default function SimulatorView({
   const isAr = language === 'ar';
   const t = TRANSLATIONS[language];
 
+  // Persona and topic can be unselected; in voice mode the user then says them to the agent
   const [selectedPersonaId, setSelectedPersonaId] =
-    useState<SkepticPersonaId>(initialPersonaId);
+    useState<SkepticPersonaId | null>(initialPersonaId);
   const [selectedTopic, setSelectedTopic] = useState<string>(
     initialTopic || (isAr ? DEBATE_TOPICS[0].ar : DEBATE_TOPICS[0].en)
   );
@@ -113,7 +114,10 @@ export default function SimulatorView({
   const isVoiceSession = isSessionActive && sessionMode === 'voice';
 
   // Debate difficulty follows the selected persona (see the persona badges)
-  const selectedDifficulty = PERSONA_DIFFICULTY[selectedPersonaId];
+  const selectedDifficulty = selectedPersonaId ? PERSONA_DIFFICULTY[selectedPersonaId] : null;
+  const hasFullSelection = selectedPersonaId !== null && activeTopic !== '';
+  // Text mode needs both; voice mode lets the agent ask for whatever is missing
+  const canStartSession = sessionMode === 'voice' || hasFullSelection;
 
   // Called by the voice agent through the `update_debate_evaluation` client tool
   const handleVoiceEvaluation = useCallback((params: DebateEvaluationToolParams) => {
@@ -162,7 +166,7 @@ export default function SimulatorView({
     const openingMessage: ChatMessage = {
       id: 'init-1',
       sender: 'skeptic',
-      text: getOpeningLine(selectedPersonaId, activeTopic, isAr),
+      text: getOpeningLine(selectedPersona.id, activeTopic, isAr),
       timestamp: new Date().toLocaleTimeString(isAr ? 'ar-SA' : 'en-US', {
         hour: '2-digit',
         minute: '2-digit',
@@ -200,7 +204,7 @@ export default function SimulatorView({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          personaId: selectedPersonaId,
+          personaId: selectedPersona.id,
           messages: updatedMessages,
           topic: activeTopic,
           language,
@@ -356,7 +360,8 @@ export default function SimulatorView({
                 return (
                   <div
                     key={persona.id}
-                    onClick={() => setSelectedPersonaId(persona.id)}
+                    onClick={() => setSelectedPersonaId(isSelected ? null : persona.id)}
+                    aria-pressed={isSelected}
                     className={`p-5 rounded-2xl border transition-all cursor-pointer text-start ${
                       isSelected
                         ? 'border-[#0A3E31] dark:border-emerald-500 bg-[#0A3E31]/5 dark:bg-emerald-950/20 shadow-md ring-2 ring-[#0A3E31]/20'
@@ -398,9 +403,10 @@ export default function SimulatorView({
                     key={top.id}
                     type="button"
                     onClick={() => {
-                      setSelectedTopic(topicText);
+                      setSelectedTopic(isSelected ? '' : topicText);
                       setCustomTopic('');
                     }}
+                    aria-pressed={isSelected}
                     className={`p-3.5 rounded-xl border text-xs font-semibold text-start transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-[#0A3E31] text-white border-[#0A3E31] shadow-sm'
@@ -499,15 +505,24 @@ export default function SimulatorView({
             <div className="text-xs text-[#6B7280] dark:text-neutral-400 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#C8A366] shrink-0" />
               <span>
-                {isAr
-                  ? 'سيتم تقييم ردودك فورياً على محاور قوة الحجة، وجودة المصدر، ولين الجانب.'
-                  : 'Your arguments will be scored in real-time across rigor, citation quality, and manner.'}
+                {hasFullSelection
+                  ? isAr
+                    ? 'سيتم تقييم ردودك فورياً على محاور قوة الحجة، وجودة المصدر، ولين الجانب.'
+                    : 'Your arguments will be scored in real-time across rigor, citation quality, and manner.'
+                  : sessionMode === 'voice'
+                    ? isAr
+                      ? 'لم تحدد كل الخيارات؛ أخبر المحاور صوتياً بنمط المشكك وموضوع المناظرة.'
+                      : 'Not everything is selected; tell the agent the skeptic type and topic by voice.'
+                    : isAr
+                      ? 'اختر نمط المشكك وموضوع المناظرة لبدء الحوار النصي.'
+                      : 'Choose a skeptic and a topic to start the written dialogue.'}
               </span>
             </div>
 
             <button
               onClick={handleStartSession}
-              className="px-6 py-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
+              disabled={!canStartSession}
+              className="px-6 py-3 rounded-xl bg-[#0A3E31] dark:bg-emerald-600 hover:bg-[#083227] dark:hover:bg-emerald-500 text-white font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0 disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {sessionMode === 'voice' ? (
                 <AudioLines className="w-4 h-4" />
@@ -532,7 +547,7 @@ export default function SimulatorView({
             <VoiceDebateStage
               className="lg:col-span-8 h-[650px]"
               language={language}
-              persona={selectedPersona}
+              persona={selectedPersonaId ? selectedPersona : null}
               topic={activeTopic}
               difficulty={selectedDifficulty}
               onEvaluation={handleVoiceEvaluation}
@@ -755,25 +770,27 @@ export default function SimulatorView({
             </div>
 
             {/* Persona Quick Insight Card */}
-            <div className="p-5 rounded-3xl bg-[#F4EFE6] dark:bg-[#0A1210] border border-[#0A3E31]/10 dark:border-white/5 text-xs text-[#4B5563] dark:text-neutral-400">
-              <div className="font-bold text-[#0A3E31] dark:text-emerald-400 mb-1">
-                {isAr ? 'نصيحة لمناظرة هذا النمط:' : 'Tactical Advice for this Persona:'}
+            {selectedPersonaId && (
+              <div className="p-5 rounded-3xl bg-[#F4EFE6] dark:bg-[#0A1210] border border-[#0A3E31]/10 dark:border-white/5 text-xs text-[#4B5563] dark:text-neutral-400">
+                <div className="font-bold text-[#0A3E31] dark:text-emerald-400 mb-1">
+                  {isAr ? 'نصيحة لمناظرة هذا النمط:' : 'Tactical Advice for this Persona:'}
+                </div>
+                <p className="leading-relaxed">
+                  {selectedPersonaId === 'stubborn' &&
+                    (isAr
+                      ? 'المشكك العنيد لا يتراجع بسهولة؛ لا تغضب، واعتمد على الإلزام المنطقي وإرجاع المسألة إلى أصولها الأولى.'
+                      : 'The Stubborn skeptic does not yield readily; maintain poise and tether your proofs to inescapable first principles.')}
+                  {selectedPersonaId === 'evasive' &&
+                    (isAr
+                      ? 'المشكك المتهرب يقفز سريعاً؛ ذكّره بأدب بحسم النقطة الأولى قبل الانتقال لأي شبهة فرعية جديدة.'
+                      : 'The Evasive skeptic shifts topics rapidly; gently invite them to conclude the primary point before branching.')}
+                  {selectedPersonaId === 'seeker' &&
+                    (isAr
+                      ? 'طالب المعرفة يبحث عن السكينة واليقين؛ قدّم له الحكمة والمقصد الإلهي بأسلوب رحيم ومؤصل.'
+                      : 'The Sincere Seeker yearns for clarity; present transcendent wisdom and divine mercy with warmth.')}
+                </p>
               </div>
-              <p className="leading-relaxed">
-                {selectedPersonaId === 'stubborn' &&
-                  (isAr
-                    ? 'المشكك العنيد لا يتراجع بسهولة؛ لا تغضب، واعتمد على الإلزام المنطقي وإرجاع المسألة إلى أصولها الأولى.'
-                    : 'The Stubborn skeptic does not yield readily; maintain poise and tether your proofs to inescapable first principles.')}
-                {selectedPersonaId === 'evasive' &&
-                  (isAr
-                    ? 'المشكك المتهرب يقفز سريعاً؛ ذكّره بأدب بحسم النقطة الأولى قبل الانتقال لأي شبهة فرعية جديدة.'
-                    : 'The Evasive skeptic shifts topics rapidly; gently invite them to conclude the primary point before branching.')}
-                {selectedPersonaId === 'seeker' &&
-                  (isAr
-                    ? 'طالب المعرفة يبحث عن السكينة واليقين؛ قدّم له الحكمة والمقصد الإلهي بأسلوب رحيم ومؤصل.'
-                    : 'The Sincere Seeker yearns for clarity; present transcendent wisdom and divine mercy with warmth.')}
-              </p>
-            </div>
+            )}
           </div>
         </div>
       )}
