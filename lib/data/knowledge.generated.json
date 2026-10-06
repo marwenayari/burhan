@@ -1,0 +1,1252 @@
+{
+  "units": [
+    {
+      "id": "BH-QP-001",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل تأخر جمع القرآن إلى ما بعد وفاة النبي ﷺ؟",
+        "variants": [
+          "القرآن لم يكن مكتوبًا في حياة محمد.",
+          "إذا لم يوجد مصحف كامل في حياة النبي فكيف نثق بالنص الحالي؟",
+          "جمع القرآن تم بعد وفاة النبي، إذن يمكن أن يكون قد تغير."
+        ],
+        "framing": "تخلط الشبهة بين كتابة الوحي في حياة النبي ﷺ وبين جمع المواد المكتوبة في مصحف واحد بين دفتين.",
+        "shortAnswer": "بحسب المصادر، القرآن كان يُتلقى ويحفظ ويكتب في حياة النبي ﷺ، أما جمع أبي بكر فكان مرحلة توثيق وجمع للمادة المكتوبة المتفرقة بعد الوفاة، لا إنشاء نص جديد.",
+        "detailedAnswer": "يفرق المصدر بين نزول القرآن وحفظه، وكتابته في حياة النبي، ثم جمع المكتوب في مصحف جامع. الجمع اللاحق جاء لحفظ مادة معروفة ومتداولة أصلًا، وكان الحفظ الشفهي والكتابة متوازيين.",
+        "reasoning": [
+          "وجود كتابة للوحي سابق على جمع أبي بكر.",
+          "وجود عدد من الحفاظ والتلقي العلني المتكرر.",
+          "الجمع اللاحق كان توثيقًا لمادة معروفة لا تأليفًا جديدًا."
+        ],
+        "spokenAnswer": "يوجد فرق مهم بين كتابة القرآن وبين جمعه في مصحف واحد. القرآن كان محفوظًا ومكتوبًا في حياة النبي، لكن المواد المكتوبة لم تكن مجلدة كلها في مصحف واحد. بعد وفاته جُمعت في مصحف جامع، فالجمع هنا توثيق لا تأليف.",
+        "sources": [
+          "حقائق الإسلام في مواجهة شبهات المشككين، باب «جمع القرآن»، PDF ص 13-27 تقريبًا.",
+          "مدخل إلى القرآن الكريم، بحث جمع القرآن ونقله، PDF ص 33-51 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Was the Quran only compiled after the Prophet ﷺ died?",
+        "variants": [
+          "The Quran was not written down during Muhammad's lifetime.",
+          "If there was no complete mushaf during the Prophet's lifetime, how can we trust the current text?",
+          "The Quran was compiled after the Prophet's death, so it could have changed."
+        ],
+        "framing": "The objection confuses the writing down of revelation during the Prophet's ﷺ lifetime with gathering the written material into a single bound volume.",
+        "shortAnswer": "According to the sources, the Quran was received, memorized and written down during the Prophet's ﷺ lifetime. Abu Bakr's compilation after his death was a stage of documenting and gathering scattered written material, not the creation of a new text.",
+        "detailedAnswer": "The source distinguishes between the revelation of the Quran and its memorization, its writing during the Prophet's lifetime, and then the gathering of what was written into one comprehensive mushaf. The later compilation preserved material that was already known and in circulation, and oral memorization and writing ran in parallel.",
+        "reasoning": [
+          "Revelation was written down before Abu Bakr's compilation.",
+          "There were many memorizers, and the text was repeatedly recited and received in public.",
+          "The later compilation documented known material; it did not compose anything new."
+        ],
+        "spokenAnswer": "There is an important difference between writing the Quran down and compiling it into one volume. The Quran was memorized and written during the Prophet's lifetime, but the written material was not all bound into a single mushaf. After his death it was gathered into one comprehensive mushaf, so the compilation was documentation, not authorship.",
+        "sources": [
+          "Haqa'iq al-Islam fi Muwajahat Shubuhat al-Mushakkikin (Truths of Islam in the Face of Skeptics' Doubts), chapter \"Compilation of the Quran\", PDF pp. 13–27 approx.",
+          "Madkhal ila al-Quran al-Karim (Introduction to the Noble Quran), study of the compilation and transmission of the Quran, PDF pp. 33–51 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-002",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل كان جمع أبي بكر غير موثق؟",
+        "variants": [
+          "من يضمن أن زيد بن ثابت لم ينس آيات؟",
+          "هل اعتمد جمع القرآن على شخص واحد؟",
+          "ألا يمكن أن تكون آيات سقطت أثناء الجمع؟"
+        ],
+        "framing": "تعرض الشبهة الجمع كأنه استرجاع كتاب كامل من ذاكرة شخص واحد.",
+        "shortAnswer": "المصدر يعرض الجمع كعملية تحقق تستند إلى المكتوب المحفوظ وإلى الحفظ والتلقي المعروفين بين جماعة الصحابة، لا إلى ذاكرة فرد منفرد.",
+        "detailedAnswer": "قوة التوثيق لا تقوم على الثقة بشخص الجامع وحده، بل على كون القرآن نصًا متداولًا ومحفوظًا وله شواهد مكتوبة، وكانت مهمة الجامع المقابلة والتوثيق.",
+        "reasoning": [
+          "الحفظ كان جماعيًا.",
+          "المواد المكتوبة كانت موجودة.",
+          "القرآن كان يتلى في الصلاة ويُتعلم علنًا."
+        ],
+        "spokenAnswer": "لو كان القرآن محفوظًا عند شخص واحد فقط لكان الاعتراض أقوى. لكن الصورة التي تقدمها المصادر مختلفة: النص كان يتلى ويُحفظ عند جماعة وله مواد مكتوبة، لذلك وظيفة الجامع كانت التحقق والتوثيق.",
+        "sources": [
+          "حقائق الإسلام، باب جمع القرآن، PDF ص 18-27.",
+          "مدخل إلى القرآن الكريم، PDF ص 33-39 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Was Abu Bakr's compilation undocumented?",
+        "variants": [
+          "Who guarantees that Zayd ibn Thabit did not forget verses?",
+          "Did the compilation of the Quran depend on a single person?",
+          "Couldn't verses have been lost during the compilation?"
+        ],
+        "framing": "The objection presents the compilation as if an entire book were recovered from one person's memory.",
+        "shortAnswer": "The source presents the compilation as a verification process based on preserved written material and on the memorization and transmission known among the Companions as a group, not on the memory of one individual.",
+        "detailedAnswer": "The strength of the documentation does not rest on trust in the compiler alone. It rests on the Quran being a text that was in circulation, memorized, and backed by written witnesses; the compiler's task was to cross-check and document.",
+        "reasoning": [
+          "Memorization was collective.",
+          "Written material existed.",
+          "The Quran was recited in prayer and taught in public."
+        ],
+        "spokenAnswer": "If the Quran had been preserved by only one person, the objection would be stronger. But the picture the sources give is different: the text was recited and memorized by a community and had written material behind it. That is why the compiler's job was verification and documentation.",
+        "sources": [
+          "Haqa'iq al-Islam, chapter \"Compilation of the Quran\", PDF pp. 18–27.",
+          "Madkhal ila al-Quran al-Karim, PDF pp. 33–39 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-003",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل غيّر عثمان القرآن عندما وحّد المصاحف؟",
+        "variants": [
+          "لماذا أحرق عثمان المصاحف؟",
+          "هل حذف عثمان آيات؟",
+          "هل مصحف عثمان نسخة سياسية من القرآن؟"
+        ],
+        "framing": "تفسر الشبهة توحيد المصاحف كأنه اختيار نص جديد من عدة نصوص متعارضة.",
+        "shortAnswer": "بحسب المصادر، هدف الجمع العثماني كان منع النزاع في القراءة وتوحيد المرجع العام على مادة مجموعة سابقًا، لا إنشاء قرآن جديد.",
+        "detailedAnswer": "جمع أبي بكر كان لحفظ الوثائق، بينما ظهرت في عهد عثمان حاجة إلى توحيد المرجع مع اتساع الأمصار. نُسخت المصاحف الإمام وأرسلت، وكان المقصود منع أن تتحول النسخ الشخصية واختلاف طرق التلقي إلى صراع.",
+        "reasoning": [
+          "التمييز بين وظيفة جمع أبي بكر وجمع عثمان.",
+          "الاعتماد على جمع سابق لا على إنشاء نص مستقل.",
+          "المصحف الشخصي لا يساوي نصًا وحيانيًا منافسًا."
+        ],
+        "spokenAnswer": "حرق بعض المصاحف لا يعني أن عثمان اختار قرآنًا جديدًا. المشكلة كانت أن النسخ الشخصية وطرق القراءة بدأت تسبب نزاعًا، فوحّد المرجع المكتوب المعتمد على الجمع السابق لمنع الانقسام.",
+        "sources": [
+          "حقائق الإسلام، «مرحلة الجمع الثانية»، PDF ص 20-27 تقريبًا.",
+          "مدخل إلى القرآن الكريم، PDF ص 38-51."
+        ]
+      },
+      "en": {
+        "title": "Did Uthman change the Quran when he unified the copies?",
+        "variants": [
+          "Why did Uthman burn the copies of the Quran?",
+          "Did Uthman delete verses?",
+          "Is Uthman's mushaf a political version of the Quran?"
+        ],
+        "framing": "The objection interprets the unification of the copies as choosing a new text from several conflicting texts.",
+        "shortAnswer": "According to the sources, the aim of Uthman's compilation was to prevent disputes over recitation and to unify the public reference on material that had already been compiled, not to create a new Quran.",
+        "detailedAnswer": "Abu Bakr's compilation was meant to preserve the documents, while under Uthman, as the Muslim lands expanded, a need arose to unify the reference text. The master copies were transcribed and sent out, and the purpose was to stop personal copies and differing ways of transmission from turning into conflict.",
+        "reasoning": [
+          "The functions of Abu Bakr's compilation and Uthman's compilation are distinct.",
+          "Uthman relied on the earlier compilation, not on producing an independent text.",
+          "A personal copy is not the same as a competing revealed text."
+        ],
+        "spokenAnswer": "Burning some copies does not mean Uthman chose a new Quran. The problem was that personal copies and ways of reading had started to cause disputes, so he unified the written reference, based on the earlier compilation, to prevent division.",
+        "sources": [
+          "Haqa'iq al-Islam, \"The second stage of compilation\", PDF pp. 20–27 approx.",
+          "Madkhal ila al-Quran al-Karim, PDF pp. 38–51."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-004",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل تعدد المصاحف القديمة يعني وجود قرآنات مختلفة؟",
+        "variants": [
+          "مصحف ابن مسعود ومصحف أبيّ دليل على نسخ مختلفة.",
+          "هل كان لكل صحابي قرآن خاص؟",
+          "لماذا وُجدت مصاحف بأسماء صحابة؟"
+        ],
+        "framing": "تفترض الشبهة أن كل ما يسمى مصحف فلان يمثل نصًا منافسًا للمصحف العام.",
+        "shortAnswer": "المصادر تفرق بين النسخة الشخصية وبين النص الجماعي المعتمد؛ وقد تختلف النسخ الخاصة في ترتيب أو هوامش أو مواد تعليمية دون أن تكون وحيًا آخر.",
+        "detailedAnswer": "تسمية نسخة باسم صاحبها لا تعني أنها قرآن مستقل. المرجع الحاسم هو النص الجماعي المتلقى والمتعبد بتلاوته والذي وحّد عليه الجمع العثماني.",
+        "reasoning": [
+          "وجود نسخ شخصية أمر طبيعي في بيئة الكتابة المبكرة.",
+          "التوحيد العثماني استهدف المرجع العام.",
+          "اختلاف الترتيب أو الهوامش لا يثبت اختلاف النص المنزل."
+        ],
+        "spokenAnswer": "اسم مصحف ابن مسعود لا يعني تلقائيًا أن له قرآنًا آخر. قد يعني ببساطة النسخة التي كتبها لنفسه. السؤال هو: ما النص الجماعي المتلقى؟ المصادر تربطه بالمصحف الذي عُمم في الجمع العثماني.",
+        "sources": [
+          "حقائق الإسلام، «تعدد مصاحف القرآن»، PDF ص 38-42 تقريبًا.",
+          "مدخل إلى القرآن الكريم، PDF ص 38-51."
+        ]
+      },
+      "en": {
+        "title": "Do the multiple early copies mean there were different Qurans?",
+        "variants": [
+          "The codices of Ibn Mas'ud and Ubayy prove there were different versions.",
+          "Did each Companion have his own Quran?",
+          "Why were there copies named after Companions?"
+        ],
+        "framing": "The objection assumes that anything called \"so-and-so's mushaf\" represents a text competing with the public mushaf.",
+        "shortAnswer": "The sources distinguish between a personal copy and the communal, authoritative text. Private copies could differ in order, marginal notes or teaching material without being another revelation.",
+        "detailedAnswer": "Naming a copy after its owner does not mean it is an independent Quran. The decisive reference is the communal text that was received, recited in worship, and on which Uthman's compilation unified the community.",
+        "reasoning": [
+          "Personal copies are natural in an early writing environment.",
+          "Uthman's unification targeted the public reference.",
+          "Differences in order or marginal notes do not prove a difference in the revealed text."
+        ],
+        "spokenAnswer": "The name 'the mushaf of Ibn Mas'ud' doesn't automatically mean he had another Quran. It may simply mean the copy he wrote for himself. The real question is: what was the communal text that was received? The sources link it to the mushaf that was circulated in Uthman's compilation.",
+        "sources": [
+          "Haqa'iq al-Islam, \"The multiplicity of Quran copies\", PDF pp. 38–42 approx.",
+          "Madkhal ila al-Quran al-Karim, PDF pp. 38–51."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-005",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل تعدد القراءات يعني تناقض القرآن؟",
+        "variants": [
+          "لماذا توجد أكثر من قراءة للآية؟",
+          "إذا قرئت الكلمة بأكثر من وجه فأيها القرآن؟",
+          "هل القراءات أخطاء نسخ؟"
+        ],
+        "framing": "تتعامل الشبهة مع القراءات كأنها تخمينات ناسخين أو نسخ متعارضة.",
+        "shortAnswer": "يعرض المصدر القراءات الصحيحة كطرق أداء منقولة بضوابط، لا تصحيحات لاحقة لنص فاسد.",
+        "detailedAnswer": "القراءة المقبولة ليست اختيارًا حرًا؛ تُربط بصحة النقل وموافقة العربية والرسم. لذلك فالتنوع المنقول في الأداء يختلف عن وجود نصوص متناقضة مستقلة.",
+        "reasoning": [
+          "القراءات لها شروط قبول.",
+          "بعض الاختلافات توسع المعنى ولا تنقضه.",
+          "بقاء القراءة ضمن إطار الرسم والنقل يميزها عن التحريف."
+        ],
+        "spokenAnswer": "تعدد القراءة لا يعني أن الناس كانوا يخمنون الكلمة. القراءة الصحيحة لها نقل وضوابط، وتبقى مرتبطة برسم المصحف والعربية. نحن أمام تنوع منقول في الأداء لا نسخ متعارضة من الكتاب.",
+        "sources": [
+          "حقائق الإسلام، «تعدد قراءات القرآن»، PDF ص 43-55 تقريبًا.",
+          "مدخل إلى القرآن الكريم، مناقشة الرسم والقراءات، PDF ص 41-50 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Do the multiple readings mean the Quran contradicts itself?",
+        "variants": [
+          "Why is there more than one reading of a verse?",
+          "If a word is read in more than one way, which one is the Quran?",
+          "Are the readings copying errors?"
+        ],
+        "framing": "The objection treats the readings (qira'at) as scribes' guesses or as conflicting versions.",
+        "shortAnswer": "The source presents the authentic readings as transmitted modes of recitation governed by criteria, not later corrections of a corrupted text.",
+        "detailedAnswer": "An accepted reading is not a free choice; it is tied to sound transmission and to agreement with Arabic and with the written script. So transmitted variety in recitation is different from the existence of independent, contradictory texts.",
+        "reasoning": [
+          "The readings have conditions for acceptance.",
+          "Some differences broaden the meaning rather than contradict it.",
+          "Staying within the bounds of the script and of transmission distinguishes a reading from distortion."
+        ],
+        "spokenAnswer": "Having several readings doesn't mean people were guessing the word. An authentic reading has transmission and criteria behind it, and it stays tied to the script of the mushaf and to Arabic. What we have is transmitted variety in recitation, not conflicting copies of the book.",
+        "sources": [
+          "Haqa'iq al-Islam, \"The multiplicity of Quranic readings\", PDF pp. 43–55 approx.",
+          "Madkhal ila al-Quran al-Karim, discussion of the script and the readings, PDF pp. 41–50 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-006",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل النقط والحركات إضافات متأخرة غيرت القرآن؟",
+        "variants": [
+          "المصحف الأول لم يكن منقوطًا، فكيف عُرفت الكلمات؟",
+          "أضيف التشكيل لاحقًا؛ أليس هذا تغييرًا للنص؟",
+          "هل علامات الوقف جزء من الوحي؟"
+        ],
+        "framing": "تخلط الشبهة بين النص المنقول وبين الأدوات الكتابية المساعدة على القراءة.",
+        "shortAnswer": "النقط والحركات وعلامات الوقف أدوات ضبط طورت لخدمة القراءة وتقليل الخطأ، وليست كلمات جديدة أضيفت إلى الوحي.",
+        "detailedAnswer": "كان النص يُتلقى شفهيًا ويقرأ قبل اكتمال منظومة النقط والحركات. ومع دخول غير العرب ظهرت الحاجة إلى وسائل بصرية تساعد على حفظ الأداء المعروف.",
+        "reasoning": [
+          "التلقي الشفهي سابق لتطور الضبط.",
+          "الضبط يشرح القراءة ولا ينشئ كلمات جديدة.",
+          "تطور الكتابة لا يعني تغير مضمون النص."
+        ],
+        "spokenAnswer": "النقطة أو الحركة ليست آية جديدة. النص كان يُقرأ ويُتلقى قبل اكتمال علامات الضبط، ثم أضيفت وسائل بصرية تساعد القارئ على أداء النص المعروف بصورة أدق.",
+        "sources": [
+          "حقائق الإسلام، باب الرسم والضبط، PDF ص 27-36 تقريبًا.",
+          "مدخل إلى القرآن الكريم، PDF ص 41-51."
+        ]
+      },
+      "en": {
+        "title": "Are the dots and vowel marks later additions that changed the Quran?",
+        "variants": [
+          "The first mushaf had no dots, so how were the words known?",
+          "Vowel marks were added later; isn't that a change to the text?",
+          "Are the pause marks part of the revelation?"
+        ],
+        "framing": "The objection confuses the transmitted text with the writing aids that help people read it.",
+        "shortAnswer": "Dots, vowel marks and pause marks are tools developed to serve recitation and reduce errors. They are not new words added to the revelation.",
+        "detailedAnswer": "The text was received orally and recited before the system of dots and vowel marks was complete. As non-Arabs entered Islam, a need arose for visual aids to help preserve the known recitation.",
+        "reasoning": [
+          "Oral transmission came before the development of these marks.",
+          "The marks explain the reading; they do not create new words.",
+          "A development in writing does not mean the content of the text changed."
+        ],
+        "spokenAnswer": "A dot or a vowel mark is not a new verse. The text was read and transmitted before these marks were complete, and then visual aids were added to help the reader recite the known text more precisely.",
+        "sources": [
+          "Haqa'iq al-Islam, chapter on the script and its marking, PDF pp. 27–36 approx.",
+          "Madkhal ila al-Quran al-Karim, PDF pp. 41–51."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-007",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل وجود كلمات ذات أصول غير عربية ينفي عربية القرآن؟",
+        "variants": [
+          "القرآن يقول إنه عربي وفيه كلمات أعجمية.",
+          "وجود ألفاظ فارسية أو سريانية دليل الاقتباس.",
+          "هل أصل الكلمة الأجنبي يجعل النص غير عربي؟"
+        ],
+        "framing": "تفترض الشبهة أن أصل الكلمة التاريخي يحدد انتماءها اللغوي إلى الأبد.",
+        "shortAnswer": "يجيب المصدر بأن اللغات تتبادل الألفاظ، وقد تُعرّب الكلمة وتدخل الاستعمال العربي، فلا يجعل أصلها الأبعد النص غير عربي.",
+        "detailedAnswer": "العبرة بحالة اللفظ في لغة المتكلمين واستعمالهم وقت نزول النص، لا بأقدم أصل لغوي له. الاقتراض اللغوي ظاهرة طبيعية في جميع اللغات.",
+        "reasoning": [
+          "اللغات تقترض ألفاظًا باستمرار.",
+          "الكلمة قد تندمج صوتيًا وصرفيًا في اللغة الجديدة.",
+          "وجود الاقتراض لا يغير هوية اللغة كلها."
+        ],
+        "spokenAnswer": "كون كلمة لها أصل قديم في لغة أخرى لا يعني أنها لم تعد عربية في الاستعمال. كل اللغات تقترض ألفاظًا ثم تدمجها، لذلك وجود لفظ معرّب لا يناقض وصف القرآن بأنه عربي.",
+        "sources": [
+          "حقائق الإسلام، «الكلام الأعجمي»، PDF ص 56-59 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Do words of non-Arabic origin disprove that the Quran is Arabic?",
+        "variants": [
+          "The Quran says it is Arabic, yet it contains foreign words.",
+          "Persian or Syriac words are evidence of borrowing.",
+          "Does a word's foreign origin make the text non-Arabic?"
+        ],
+        "framing": "The objection assumes that a word's historical origin fixes its linguistic identity forever.",
+        "shortAnswer": "The source answers that languages exchange words: a word can be Arabized and enter Arabic usage, so its distant origin does not make the text non-Arabic.",
+        "detailedAnswer": "What matters is the word's status in the speakers' language and usage at the time the text was revealed, not its oldest linguistic root. Linguistic borrowing is a natural phenomenon in every language.",
+        "reasoning": [
+          "Languages constantly borrow words.",
+          "A word can be integrated phonetically and morphologically into its new language.",
+          "Borrowing does not change the identity of the language as a whole."
+        ],
+        "spokenAnswer": "The fact that a word has an ancient origin in another language doesn't mean it stopped being Arabic in usage. Every language borrows words and then absorbs them, so an Arabized word doesn't contradict describing the Quran as Arabic.",
+        "sources": [
+          "Haqa'iq al-Islam, \"Foreign words\", PDF pp. 56–59 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QP-008",
+      "file": "public/knowledge/01_quran_preservation_collection_readings.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "جمع القرآن",
+        "حفظ القرآن",
+        "المصاحف",
+        "القراءات",
+        "الرسم والنقط",
+        "عربية القرآن"
+      ],
+      "topicAr": "حفظ القرآن وجمعه وقراءاته",
+      "topicEn": "Preservation, Compilation and Readings of the Quran",
+      "ar": {
+        "title": "هل الحروف المقطعة كلام بلا معنى؟",
+        "variants": [
+          "ما معنى الم وكهيعص وحم؟",
+          "هل في القرآن حروف عبثية؟",
+          "لماذا توجد حروف لا نعرف معناها؟"
+        ],
+        "framing": "تنتقل الشبهة من عدم معرفة تفسير قطعي واحد إلى الجزم بانعدام المعنى.",
+        "shortAnswer": "يرفض المصدر هذه القفزة المنطقية ويعرض عدة اتجاهات تفسيرية للحروف المقطعة؛ عدم القطع بمعنى واحد لا يساوي إثبات العبث.",
+        "detailedAnswer": "هناك فرق بين قولنا «لا نعرف المعنى على وجه اليقين» وقولنا «لا يوجد معنى». الثاني يحتاج دليلًا مستقلًا.",
+        "reasoning": [
+          "تعدد التفسير لا يثبت انعدام المعنى.",
+          "الحروف جزء مستقر من النص المتلقى."
+        ],
+        "spokenAnswer": "عدم اتفاقنا على تفسير قطعي للحروف المقطعة لا يسمح بأن نقول إنها بلا معنى. الفرق كبير بين لا أعرف المعنى على وجه اليقين وبين لا يوجد معنى.",
+        "sources": [
+          "حقائق الإسلام، «الكلام العاطل»، PDF ص 60-64 وما بعدها."
+        ]
+      },
+      "en": {
+        "title": "Are the disconnected letters meaningless?",
+        "variants": [
+          "What do Alif-Lam-Mim, Kaf-Ha-Ya-'Ayn-Sad and Ha-Mim mean?",
+          "Are there meaningless letters in the Quran?",
+          "Why are there letters whose meaning we don't know?"
+        ],
+        "framing": "The objection moves from the absence of one definitive interpretation to the claim that there is no meaning.",
+        "shortAnswer": "The source rejects this logical leap and presents several interpretive approaches to the disconnected letters; not being certain of a single meaning is not proof of meaninglessness.",
+        "detailedAnswer": "There is a difference between saying \"we do not know the meaning with certainty\" and saying \"there is no meaning\". The second needs independent evidence.",
+        "reasoning": [
+          "Multiple interpretations do not prove an absence of meaning.",
+          "The letters are a stable part of the received text."
+        ],
+        "spokenAnswer": "Not agreeing on a definitive interpretation of the disconnected letters doesn't allow us to say they are meaningless. There is a big difference between 'I don't know the meaning with certainty' and 'there is no meaning'.",
+        "sources": [
+          "Haqa'iq al-Islam, \"Meaningless speech\", PDF pp. 60–64 and following."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-001",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "هل ألّف محمد ﷺ القرآن من عند نفسه؟",
+        "variants": [
+          "القرآن من تأليف محمد.",
+          "ربما كان محمد عبقريًا أدبيًا فكتب القرآن.",
+          "Muhammad authored the Quran."
+        ],
+        "framing": "تفترض الشبهة أن التأليف الشخصي يفسر خصائص القرآن وتاريخه.",
+        "shortAnswer": "يبني دراز جوابًا تراكميًا من الفرق بين أسلوب القرآن وكلام النبي، وآيات العتاب والتصحيح، وطبيعة الوحي، ومضمون لا يفسر بسهولة بفرضية الكاتب الشخصي.",
+        "detailedAnswer": "الحجة ليست نقطة واحدة؛ بل اجتماع استقلال الأسلوب القرآني، ووجود نصوص تصحح للنبي اجتهاده، وانتظاره للوحي، وطبيعة معلومات وتفاصيل يناقشها القرآن.",
+        "reasoning": [
+          "الفرق الأسلوبي بين الحديث والقرآن.",
+          "آيات تعاتب أو تصحح للنبي.",
+          "النبي يظهر متلقيًا للوحي لا متحكمًا في نزوله."
+        ],
+        "spokenAnswer": "فرضية أن محمدًا ألّف القرآن تحتاج أن تفسر لماذا يختلف أسلوب القرآن عن كلامه المعروف، ولماذا يتضمن النص عتابًا له وتصحيحًا لبعض اجتهاداته، ولماذا يظهر باستمرار كمتلق ينتظر الوحي. دراز يجمع هذه القرائن ولا يعتمد على واحدة فقط.",
+        "sources": [
+          "النبأ العظيم، مباحث مصدر القرآن، PDF ص 55-110 تقريبًا.",
+          "مدخل إلى القرآن الكريم، القسم الخاص بربانية مصدر القرآن."
+        ]
+      },
+      "en": {
+        "title": "Did Muhammad ﷺ write the Quran himself?",
+        "variants": [
+          "The Quran was authored by Muhammad.",
+          "Perhaps Muhammad was a literary genius who wrote the Quran.",
+          "Muhammad authored the Quran."
+        ],
+        "framing": "The objection assumes that personal authorship explains the characteristics and history of the Quran.",
+        "shortAnswer": "Draz builds a cumulative answer from the difference between the style of the Quran and the Prophet's own speech, the verses of reproach and correction, the nature of revelation, and content that the hypothesis of a personal author does not easily explain.",
+        "detailedAnswer": "The argument is not a single point. It is the combination of the Quran's independent style, texts that correct the Prophet's own judgments, his waiting for revelation, and the nature of the information and details the Quran discusses.",
+        "reasoning": [
+          "The stylistic difference between the hadith and the Quran.",
+          "Verses that reproach or correct the Prophet.",
+          "The Prophet appears as a recipient of revelation, not in control of when it came."
+        ],
+        "spokenAnswer": "The hypothesis that Muhammad wrote the Quran has to explain why the Quran's style differs from his known speech, why the text contains reproach of him and corrections of some of his judgments, and why he consistently appears as a recipient waiting for revelation. Draz brings these indications together and does not rely on just one.",
+        "sources": [
+          "Al-Naba' al-'Azim (The Great News), sections on the source of the Quran, PDF pp. 55–110 approx.",
+          "Madkhal ila al-Quran al-Karim (Introduction to the Noble Quran), section on the divine source of the Quran."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-002",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "هل تعلم النبي القرآن من يهود أو نصارى؟",
+        "variants": [
+          "محمد أخذ القصص من أهل الكتاب.",
+          "ربما كان له معلم سري من اليهود أو النصارى.",
+          "التشابه مع الكتاب المقدس يثبت الاقتباس."
+        ],
+        "framing": "تستدل الشبهة من الموضوعات المشتركة على وجود معلم بشري مباشر.",
+        "shortAnswer": "دراز يفرق بين وجود موضوع مشترك وبين إثبات طريق الاقتباس، ويلفت إلى أن القرآن كثيرًا ما يناقش أهل الكتاب وينقدهم ويصحح تصوراتهم بدل أن يظهر تابعًا لهم.",
+        "detailedAnswer": "المعرفة العامة ببعض أسماء الأنبياء لا تفسر التفاصيل الدقيقة. كما أن فرضية المعلم تحتاج تحديد المعلم وطريق التلقي والدليل التاريخي، لا مجرد التشابه.",
+        "reasoning": [
+          "التشابه لا يثبت وحده علاقة نقل.",
+          "القرآن ينتقد أهل الكتاب في مواضع كثيرة.",
+          "يلزم دليل تاريخي على المعلم وطريقة التلقي."
+        ],
+        "spokenAnswer": "وجود قصة موسى أو مريم في القرآن والكتاب المقدس لا يكفي لإثبات الاقتباس. نحتاج دليلًا على من علّمه وكيف. ودراز يلاحظ أن القرآن كثيرًا ما يخالف أهل الكتاب وينقدهم، لذلك التشابه يثبت موضوعًا مشتركًا لا طريق النقل.",
+        "sources": [
+          "النبأ العظيم، PDF ص 55-60 وص 90 خصوصًا."
+        ]
+      },
+      "en": {
+        "title": "Did the Prophet learn the Quran from Jews or Christians?",
+        "variants": [
+          "Muhammad took the stories from the People of the Book.",
+          "Perhaps he had a secret Jewish or Christian teacher.",
+          "The similarity with the Bible proves borrowing."
+        ],
+        "framing": "The objection infers a direct human teacher from shared subject matter.",
+        "shortAnswer": "Draz distinguishes between a shared subject and proof of a path of borrowing, and points out that the Quran often debates the People of the Book, criticizes them and corrects their views rather than appearing to follow them.",
+        "detailedAnswer": "General knowledge of some prophets' names does not explain the precise details. And the teacher hypothesis needs to identify the teacher, the path of transmission and the historical evidence, not just point to similarity.",
+        "reasoning": [
+          "Similarity alone does not prove a relationship of transmission.",
+          "The Quran criticizes the People of the Book in many places.",
+          "Historical evidence of the teacher and the means of learning is required."
+        ],
+        "spokenAnswer": "The story of Moses or Mary appearing in both the Quran and the Bible isn't enough to prove borrowing. We need evidence of who taught him and how. And Draz notes that the Quran often disagrees with the People of the Book and criticizes them, so the similarity proves a shared subject, not a path of transmission.",
+        "sources": [
+          "Al-Naba' al-'Azim, PDF pp. 55–60, and p. 90 in particular."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-003",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "هل قصص الأنبياء كانت مجرد حكايات شائعة؟",
+        "variants": [
+          "قصص الأنبياء كانت معروفة عند العرب.",
+          "القرآن أعاد صياغة حكايات شعبية.",
+          "لا يوجد شيء غريب في معرفة محمد قصص الماضي."
+        ],
+        "framing": "تساوي الشبهة بين معرفة عامة بالأسماء والحوادث وبين المعرفة التفصيلية المنظمة.",
+        "shortAnswer": "دراز يقر بإمكان شيوع قدر يسير من الأخبار، لكنه يميز ذلك عن التفاصيل الدقيقة والمواقف النقدية التي لا تفسرها المعرفة الشعبية وحدها.",
+        "detailedAnswer": "وجود أسماء نوح وموسى ومريم في البيئة لا يساوي امتلاك مادة تفصيلية منظمة عنهم.",
+        "reasoning": [
+          "المصدر يصرح بأن بعض الأخبار العامة قد تشيع.",
+          "محور الحجة هو الفرق بين الإجمال والتفصيل."
+        ],
+        "spokenAnswer": "دراز لا يقول إن العرب لم يسمعوا اسم نوح أو موسى. هو يفرق بين معرفة عامة تنتقل في الحكايات وبين تفاصيل دقيقة ومواقف نقدية متماسكة. شيوع الاسم لا يفسر كل المادة القرآنية.",
+        "sources": [
+          "النبأ العظيم، PDF ص 55-60 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Were the stories of the prophets just popular tales?",
+        "variants": [
+          "The stories of the prophets were known among the Arabs.",
+          "The Quran reworded folk tales.",
+          "There is nothing strange about Muhammad knowing stories of the past."
+        ],
+        "framing": "The objection treats general knowledge of names and events as equivalent to detailed, organized knowledge.",
+        "shortAnswer": "Draz accepts that a small amount of such reports may have been widespread, but distinguishes this from the precise details and critical positions that popular knowledge alone does not explain.",
+        "detailedAnswer": "Names such as Noah, Moses and Mary being present in the environment is not the same as possessing detailed, organized material about them.",
+        "reasoning": [
+          "The source states openly that some general reports may have circulated.",
+          "The core of the argument is the difference between the general outline and the details."
+        ],
+        "spokenAnswer": "Draz doesn't say the Arabs had never heard the name of Noah or Moses. He distinguishes between general knowledge passed on in tales and precise details and coherent critical positions. A name being widespread doesn't explain all of the Quranic material.",
+        "sources": [
+          "Al-Naba' al-'Azim, PDF pp. 55–60 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-004",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "هل الوحي مجرد حالة نفسية أو صوت داخلي؟",
+        "variants": [
+          "ربما كان الوحي حالة نفسية.",
+          "هل كان جبريل مجرد تصور داخلي؟",
+          "كيف نعرف أنها ليست هلوسة؟"
+        ],
+        "framing": "تحاول الشبهة تفسير الخبرة النبوية داخل النفس من غير مصدر خارجي.",
+        "shortAnswer": "يعرض دراز الوحي كخبرة ذات نمط ثابت ومحتوى متماسك مع بقاء التوازن العقلي للنبي، ويفرق بينها وبين الاضطرابات النفسية أو الإيحاء البشري العادي.",
+        "detailedAnswer": "النبي يميز بين رأيه الشخصي والوحي، والتجربة لا تتركه فاقدًا للعقل أو مضطرب الشخصية، والمضمون يستمر متماسكًا عبر سنوات طويلة.",
+        "reasoning": [
+          "استمرار التوازن العقلي.",
+          "التمييز بين الرأي والوحي.",
+          "تماسك المحتوى عبر زمن طويل."
+        ],
+        "spokenAnswer": "تفسير الوحي بأنه حالة نفسية ليس نتيجة تلقائية؛ هو فرضية تحتاج دليلًا. دراز يسأل هل علامات التجربة ومحتواها واستمرار توازن النبي تشبه الاضطراب النفسي؟ ويلاحظ أن النبي كان يفرق بين رأيه البشري وبين الوحي.",
+        "sources": [
+          "النبأ العظيم، بحث ظاهرة الوحي، PDF ص 100-115 تقريبًا، ومنها ص 110."
+        ]
+      },
+      "en": {
+        "title": "Was revelation just a psychological state or an inner voice?",
+        "variants": [
+          "Perhaps revelation was a psychological state.",
+          "Was Gabriel just an inner image?",
+          "How do we know it wasn't hallucination?"
+        ],
+        "framing": "The objection tries to explain the prophetic experience as something inside the mind, with no external source.",
+        "shortAnswer": "Draz presents revelation as an experience with a consistent pattern and coherent content, while the Prophet's mental balance remained intact, and distinguishes it from psychological disorders or ordinary human suggestion.",
+        "detailedAnswer": "The Prophet distinguishes between his personal opinion and revelation; the experience does not leave him irrational or with a disturbed personality, and the content remains coherent over many years.",
+        "reasoning": [
+          "His mental balance continued.",
+          "He distinguished between his opinion and revelation.",
+          "The content stayed coherent over a long period."
+        ],
+        "spokenAnswer": "Explaining revelation as a psychological state isn't an automatic conclusion; it's a hypothesis that needs evidence. Draz asks whether the signs of the experience, its content and the Prophet's continued balance resemble a psychological disorder, and he notes that the Prophet distinguished between his human opinion and revelation.",
+        "sources": [
+          "Al-Naba' al-'Azim, study of the phenomenon of revelation, PDF pp. 100–115 approx., including p. 110."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-005",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "لماذا يعد عتاب القرآن للنبي قرينة ضد التأليف الشخصي؟",
+        "variants": [
+          "ربما كتب محمد آيات العتاب ليبدو صادقًا.",
+          "ما أهمية آيات العتاب؟",
+          "هل القرآن ينتقد النبي؟"
+        ],
+        "framing": "تعترض الشبهة بأن المؤلف يستطيع كتابة نقد لنفسه عمدًا.",
+        "shortAnswer": "آيات العتاب ليست برهانًا منفردًا، لكنها قرينة ضمن مجموعة قرائن؛ فهي تظهر النص أحيانًا مصححًا للنبي في مواقف كان يمكن للمؤلف الشخصي تجاوزها أو صياغتها لصالحه.",
+        "detailedAnswer": "يعرض الكتاب أمثلة لنزول القرآن مصححًا حكمًا أو موقفًا للنبي؛ قيمة ذلك تظهر عندما يضم إلى القرائن الأخرى على كونه متلقيًا للنص.",
+        "reasoning": [
+          "ليست حجة منفردة.",
+          "تكتسب قوتها من السياق والتكرار وضمها لبقية القرائن."
+        ],
+        "spokenAnswer": "آيات العتاب وحدها لا تحسم النقاش، لكنها لافتة ضمن الصورة الكاملة. إذا كان شخص يؤلف نصًا لتعزيز سلطته، فوجود نصوص تصحح له علنًا بعض المواقف يحتاج تفسيرًا. في فرضية الوحي هذا طبيعي لأنه متلق للنص.",
+        "sources": [
+          "النبأ العظيم، أمثلة العتاب والتصحيح، PDF ص 75-85 تقريبًا، ومنها قصة بني أبيرق."
+        ]
+      },
+      "en": {
+        "title": "Why is the Quran's reproach of the Prophet an indication against personal authorship?",
+        "variants": [
+          "Perhaps Muhammad wrote the verses of reproach to appear sincere.",
+          "Why do the verses of reproach matter?",
+          "Does the Quran criticize the Prophet?"
+        ],
+        "framing": "The objection argues that an author can deliberately write criticism of himself.",
+        "shortAnswer": "The verses of reproach are not a proof on their own, but they are one indication among several: they sometimes show the text correcting the Prophet in situations that a personal author could have skipped or worded in his own favor.",
+        "detailedAnswer": "The book gives examples of the Quran being revealed to correct a ruling or position of the Prophet. Their value becomes clear when combined with the other indications that he was a recipient of the text.",
+        "reasoning": [
+          "It is not a standalone argument.",
+          "It gains its strength from context, repetition and its combination with the other indications."
+        ],
+        "spokenAnswer": "The verses of reproach don't settle the debate on their own, but they stand out within the full picture. If someone were writing a text to strengthen his authority, texts that publicly correct some of his positions need explaining. Under the hypothesis of revelation this is natural, because he is a recipient of the text.",
+        "sources": [
+          "Al-Naba' al-'Azim, examples of reproach and correction, PDF pp. 75–85 approx., including the story of Banu Ubayriq."
+        ]
+      }
+    },
+    {
+      "id": "BH-QS-006",
+      "file": "public/knowledge/02_quran_source_revelation_authorship.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "مصدر القرآن",
+        "الوحي",
+        "النبوة",
+        "التعلم من أهل الكتاب"
+      ],
+      "topicAr": "مصدر القرآن والوحي",
+      "topicEn": "The Source of the Quran and Revelation",
+      "ar": {
+        "title": "هل نبوءات القرآن كُتبت بعد تحقق الأحداث؟",
+        "variants": [
+          "ربما أضيفت النبوءات بعد وقوع الأحداث.",
+          "التنبؤ بالمستقبل لا يثبت شيئًا إذا حُرر النص لاحقًا.",
+          "كيف نتحقق من توقيت النص؟"
+        ],
+        "framing": "تلفت الشبهة إلى ضرورة إثبات سبق النص للحدث.",
+        "shortAnswer": "يوافق منهج دراز ضمنيًا على أن قيمة الإخبار بالمستقبل مرتبطة بتاريخ تداول النص، ويعرض أمثلة لوعود بالنصر والأمن في سياقات مبكرة من الضعف والخوف.",
+        "detailedAnswer": "السؤال الصحيح ليس فقط هل توجد نبوءة، بل هل كان النص معروفًا ومتداولًا قبل تحقق الحدث. لذلك يربط المؤلف الآيات بسياقها التاريخي.",
+        "reasoning": [
+          "توثيق توقيت النص شرط مهم.",
+          "المؤلف يضع الآيات في سياقات الضعف السابقة لتحقق الوعد."
+        ],
+        "spokenAnswer": "النبوة لا تكون دليلًا إذا لم نعرف متى ظهر النص. لذلك السؤال الحقيقي: هل كانت الآية متداولة قبل تحقق الحدث؟ دراز يعرض بعض الوعود في سياقها حين كان المسلمون في خوف وضعف ثم يقارنها بما وقع لاحقًا.",
+        "sources": [
+          "النبأ العظيم، أمثلة الإخبار بالمستقبل، PDF ص 65 وما بعدها."
+        ]
+      },
+      "en": {
+        "title": "Were the Quran's prophecies written after the events happened?",
+        "variants": [
+          "Perhaps the prophecies were added after the events took place.",
+          "Predicting the future proves nothing if the text was edited later.",
+          "How do we verify when the text was written?"
+        ],
+        "framing": "The objection points to the need to prove that the text came before the event.",
+        "shortAnswer": "Draz's method implicitly agrees that the value of a statement about the future depends on when the text was in circulation, and he presents examples of promises of victory and security made in early contexts of weakness and fear.",
+        "detailedAnswer": "The right question is not only whether a prophecy exists, but whether the text was known and in circulation before the event happened. That is why the author connects the verses to their historical context.",
+        "reasoning": [
+          "Documenting the timing of the text is an important condition.",
+          "The author places the verses in contexts of weakness that came before the promise was fulfilled."
+        ],
+        "spokenAnswer": "A prophecy isn't evidence if we don't know when the text appeared. So the real question is: was the verse in circulation before the event happened? Draz presents some of the promises in their context, when the Muslims were afraid and weak, and then compares them with what happened later.",
+        "sources": [
+          "Al-Naba' al-'Azim, examples of statements about the future, PDF p. 65 and following."
+        ]
+      }
+    },
+    {
+      "id": "BH-QL-001",
+      "file": "public/knowledge/03_quran_language_ijaz_coherence.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الإعجاز اللغوي",
+        "أسلوب القرآن",
+        "الفرق بين القرآن والحديث",
+        "النظم والوحدة"
+      ],
+      "topicAr": "أسلوب القرآن وإعجازه ونظمه",
+      "topicEn": "The Style, Inimitability and Structure of the Quran",
+      "ar": {
+        "title": "أليس الإعجاز البلاغي مجرد ذوق شخصي؟",
+        "variants": [
+          "الإعجاز البلاغي ذوقي.",
+          "يوجد شعر عربي جميل أيضًا.",
+          "لماذا لا يستطيع أديب تقليد القرآن؟"
+        ],
+        "framing": "تحصر الشبهة الحجة في الشعور بالجمال.",
+        "shortAnswer": "دراز لا يقصر المسألة على الجمال؛ يناقش اختيار اللفظ وموضعه وعلاقته بالمعنى وانتظام العبارة واستمرار المستوى الأسلوبي.",
+        "detailedAnswer": "الحجة عنده تحليلية تراكمية: ماذا يحدث إذا استبدل اللفظ؟ كيف يتوافق اللفظ والإيقاع والمعنى؟ وكيف يستمر ذلك في موضوعات شديدة التنوع؟",
+        "reasoning": [
+          "تحليل المفردة وموقعها.",
+          "التركيب والنظم.",
+          "استمرار الخصائص عبر موضوعات متعددة."
+        ],
+        "spokenAnswer": "لو كان المقصود فقط أن القرآن جميل لكان الاعتراض بأن الجمال ذوقي قويًا. لكن دراز يناقش شيئًا أدق: اختيار اللفظ، موضعه، وما يخسره المعنى لو استبدل. لذلك حجته ليست مجرد انبهار صوتي.",
+        "sources": [
+          "النبأ العظيم، مباحث الإعجاز اللغوي، PDF ص 125-170، ومنها ص 130."
+        ]
+      },
+      "en": {
+        "title": "Isn't the Quran's rhetorical inimitability just a matter of personal taste?",
+        "variants": [
+          "Rhetorical inimitability is a matter of taste.",
+          "There is beautiful Arabic poetry too.",
+          "Why can't a writer imitate the Quran?"
+        ],
+        "framing": "The objection reduces the argument to a feeling of beauty.",
+        "shortAnswer": "Draz does not limit the question to beauty. He discusses the choice of each word, its position, its relationship to the meaning, the ordering of the expression, and the consistency of the style.",
+        "detailedAnswer": "His argument is analytical and cumulative: what happens if a word is replaced? How do word, rhythm and meaning fit together? And how is this sustained across extremely varied subjects?",
+        "reasoning": [
+          "Analysis of the individual word and its position.",
+          "Sentence construction and composition (nazm).",
+          "The persistence of these features across many subjects."
+        ],
+        "spokenAnswer": "If the point were only that the Quran is beautiful, the objection that beauty is subjective would be strong. But Draz discusses something more precise: the choice of a word, its position, and what the meaning loses if it is replaced. So his argument is not just being impressed by the sound.",
+        "sources": [
+          "Al-Naba' al-'Azim (The Great News), sections on linguistic inimitability, PDF pp. 125–170, including p. 130."
+        ]
+      }
+    },
+    {
+      "id": "BH-QL-002",
+      "file": "public/knowledge/03_quran_language_ijaz_coherence.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الإعجاز اللغوي",
+        "أسلوب القرآن",
+        "الفرق بين القرآن والحديث",
+        "النظم والوحدة"
+      ],
+      "topicAr": "أسلوب القرآن وإعجازه ونظمه",
+      "topicEn": "The Style, Inimitability and Structure of the Quran",
+      "ar": {
+        "title": "ما الفرق بين أسلوب القرآن وكلام النبي ﷺ؟",
+        "variants": [
+          "إذا كان محمد المتكلم في الحالين فلماذا لا يكون القرآن كلامه؟",
+          "الحديث والقرآن كلاهما عربيان فما الفرق؟",
+          "هل توجد فروق أسلوبية فعلًا؟"
+        ],
+        "framing": "تسأل الشبهة عن إمكانية نسبة النمطين إلى مؤلف واحد.",
+        "shortAnswer": "يقارن دراز corpus الحديث النبوي بالقرآن ويرى لكل منهما طابعًا مستقلًا؛ الحديث فصيح لكنه لا يجري على النمط القرآني نفسه.",
+        "detailedAnswer": "استقلال نمطين لغويين مستمرين عبر زمن طويل قرينة تحتاج تفسيرًا داخل فرضية المؤلف الواحد.",
+        "reasoning": [
+          "وجود مادة واسعة من كلام النبي خارج القرآن يسمح بالمقارنة.",
+          "الاختلاف ليس في الفصاحة وحدها بل في الشخصية الأسلوبية."
+        ],
+        "spokenAnswer": "نملك نصوصًا كثيرة من كلام النبي خارج القرآن. دراز يقر بفصاحتها، لكنه يلاحظ أن لها شخصية أسلوبية مختلفة عن القرآن. فإذا كان المؤلف واحدًا في الحالين فاستقلال النمطين يصبح قرينة تستحق التفسير.",
+        "sources": [
+          "النبأ العظيم، PDF ص 138-145 تقريبًا، وخصوصًا ص 140."
+        ]
+      },
+      "en": {
+        "title": "What is the difference between the style of the Quran and the Prophet's ﷺ own speech?",
+        "variants": [
+          "If Muhammad was the speaker in both cases, why isn't the Quran his speech?",
+          "The hadith and the Quran are both Arabic, so what's the difference?",
+          "Are there really stylistic differences?"
+        ],
+        "framing": "The objection asks whether both styles could be attributed to a single author.",
+        "shortAnswer": "Draz compares the corpus of prophetic hadith with the Quran and finds that each has an independent character; the hadith is eloquent, but it does not follow the same pattern as the Quran.",
+        "detailedAnswer": "Two independent linguistic styles persisting over a long period is an indication that needs explaining under the single-author hypothesis.",
+        "reasoning": [
+          "A large body of the Prophet's speech outside the Quran makes comparison possible.",
+          "The difference is not in eloquence alone but in stylistic personality."
+        ],
+        "spokenAnswer": "We have many texts of the Prophet's speech outside the Quran. Draz acknowledges their eloquence, but notes that they have a stylistic personality different from the Quran. If the author were the same in both cases, the independence of the two styles becomes an indication that deserves an explanation.",
+        "sources": [
+          "Al-Naba' al-'Azim, PDF pp. 138–145 approx., especially p. 140."
+        ]
+      }
+    },
+    {
+      "id": "BH-QL-003",
+      "file": "public/knowledge/03_quran_language_ijaz_coherence.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الإعجاز اللغوي",
+        "أسلوب القرآن",
+        "الفرق بين القرآن والحديث",
+        "النظم والوحدة"
+      ],
+      "topicAr": "أسلوب القرآن وإعجازه ونظمه",
+      "topicEn": "The Style, Inimitability and Structure of the Quran",
+      "ar": {
+        "title": "هل العبقرية والتدريب الأدبي يكفيان لتفسير أسلوب القرآن؟",
+        "variants": [
+          "شاعر عبقري يستطيع كتابة نص مميز.",
+          "العبقرية البشرية تكفي.",
+          "لماذا نحتاج تفسيرًا فوق بشري؟"
+        ],
+        "framing": "تقترح الشبهة تفسيرًا بشريًا عامًا للتميز اللغوي.",
+        "shortAnswer": "لا يجعل دراز البلاغة وحدها برهانًا، بل يضم إليها استمرار الأسلوب واستقلاله عن كلام النبي اليومي وبنية المعنى والمضمون.",
+        "detailedAnswer": "قوة الاستدلال في التراكم لا في سمة منفردة؛ لذلك ينبغي اختبار قدرة فرضية العبقرية على تفسير المجموعة كلها.",
+        "reasoning": [
+          "التميز اللغوي وحده لا يكفي.",
+          "الاستمرارية والاستقلال الأسلوبي عنصران إضافيان."
+        ],
+        "spokenAnswer": "العبقرية الأدبية تفسر جزءًا من الظاهرة، ولذلك لا يكفي أن نقول النص بليغ إذن هو وحي. منهج دراز أوسع: يقارن الأسلوب واستمراره واستقلاله عن كلام النبي ثم يضيف بنية المعنى.",
+        "sources": [
+          "النبأ العظيم، مباحث الإعجاز اللغوي، PDF ص 125-170."
+        ]
+      },
+      "en": {
+        "title": "Are genius and literary training enough to explain the Quran's style?",
+        "variants": [
+          "A gifted poet can write a distinctive text.",
+          "Human genius is enough.",
+          "Why do we need a superhuman explanation?"
+        ],
+        "framing": "The objection proposes a general human explanation for linguistic excellence.",
+        "shortAnswer": "Draz does not make eloquence alone the proof. He combines it with the consistency of the style, its independence from the Prophet's everyday speech, and the structure of meaning and content.",
+        "detailedAnswer": "The strength of the argument lies in accumulation, not in a single feature, so the genius hypothesis should be tested on whether it can explain the whole set.",
+        "reasoning": [
+          "Linguistic excellence alone is not enough.",
+          "Consistency and stylistic independence are additional elements."
+        ],
+        "spokenAnswer": "Literary genius explains part of the phenomenon, which is why it isn't enough to say 'the text is eloquent, so it's revelation'. Draz's method is broader: he compares the style, its consistency and its independence from the Prophet's speech, and then adds the structure of meaning.",
+        "sources": [
+          "Al-Naba' al-'Azim, sections on linguistic inimitability, PDF pp. 125–170."
+        ]
+      }
+    },
+    {
+      "id": "BH-QL-004",
+      "file": "public/knowledge/03_quran_language_ijaz_coherence.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الإعجاز اللغوي",
+        "أسلوب القرآن",
+        "الفرق بين القرآن والحديث",
+        "النظم والوحدة"
+      ],
+      "topicAr": "أسلوب القرآن وإعجازه ونظمه",
+      "topicEn": "The Style, Inimitability and Structure of the Quran",
+      "ar": {
+        "title": "هل نزول القرآن مفرقًا يعني أن ترتيبه عشوائي؟",
+        "variants": [
+          "القرآن نزل في مناسبات متفرقة إذن لا وحدة له.",
+          "السور تجمع موضوعات مختلفة بلا رابط.",
+          "كيف يكون محكم البناء وهو لم ينزل دفعة واحدة؟"
+        ],
+        "framing": "تساوي الشبهة بين تعدد أوقات النزول وبين غياب الوحدة النهائية.",
+        "shortAnswer": "يناقش دراز الفرق بين زمن نزول الأجزاء وبين الصورة النهائية للنظم؛ والحكم على الوحدة يكون بفحص البنية النهائية لا بمجرد معرفة أن الأجزاء نزلت في أوقات مختلفة.",
+        "detailedAnswer": "في القسم الأخير يناقش ترتيب الأجزاء ويستعمل أمثلة من بناء المركبات وترتيب أجزائها وفق غاية كلية.",
+        "reasoning": [
+          "تعدد زمن النزول لا يستلزم منطقيًا غياب الوحدة.",
+          "الوحدة تُختبر من العلاقات بين المقاطع والغايات."
+        ],
+        "spokenAnswer": "كون الآيات نزلت على مناسبات مختلفة لا يحسم أن السورة عشوائية. هذا يحتاج فحص البنية نفسها: العلاقات بين المقاطع وترتيب المعاني والغاية الكلية.",
+        "sources": [
+          "النبأ العظيم، مباحث الوحدة والنظم في القسم الأخير، PDF ص 195-210 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Does the Quran's revelation in parts mean its order is random?",
+        "variants": [
+          "The Quran was revealed on separate occasions, so it has no unity.",
+          "The surahs gather different subjects with no connection.",
+          "How can it be tightly structured when it wasn't revealed all at once?"
+        ],
+        "framing": "The objection equates multiple times of revelation with the absence of an overall unity.",
+        "shortAnswer": "Draz discusses the difference between when the parts were revealed and the final form of the composition. Unity is judged by examining the final structure, not merely by knowing that the parts were revealed at different times.",
+        "detailedAnswer": "In the last section he discusses the arrangement of the parts, using examples of how composite structures are built and their parts ordered according to an overall purpose.",
+        "reasoning": [
+          "Multiple times of revelation do not logically entail an absence of unity.",
+          "Unity is tested through the relationships between passages and their purposes."
+        ],
+        "spokenAnswer": "The fact that verses were revealed on different occasions doesn't settle that a surah is random. That requires examining the structure itself: the relationships between passages, the ordering of meanings, and the overall purpose.",
+        "sources": [
+          "Al-Naba' al-'Azim, sections on unity and composition in the final part, PDF pp. 195–210 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-QL-005",
+      "file": "public/knowledge/03_quran_language_ijaz_coherence.md",
+      "category": "quran",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الإعجاز اللغوي",
+        "أسلوب القرآن",
+        "الفرق بين القرآن والحديث",
+        "النظم والوحدة"
+      ],
+      "topicAr": "أسلوب القرآن وإعجازه ونظمه",
+      "topicEn": "The Style, Inimitability and Structure of the Quran",
+      "ar": {
+        "title": "هل يمكن إدخال عبارة بشرية في القرآن دون أن تُكتشف؟",
+        "variants": [
+          "ربما دخلت إضافات صغيرة في النص.",
+          "الأسلوب لا يمنع التحريف.",
+          "هل يمكن تقليد النبرة القرآنية وإضافة جملة؟"
+        ],
+        "framing": "تفترض الشبهة إمكانية إدخال مادة صغيرة غير أصلية.",
+        "shortAnswer": "يستعمل دراز انتظام النظم والخصائص الأسلوبية كقرينة إضافية ضد الإدخال الاعتباطي، مع بقاء النقل التاريخي أساسًا مستقلًا.",
+        "detailedAnswer": "كل عبارة دخيلة تحتاج أن تنسجم مع اللغة والإيقاع والمعنى والبنية؛ لذلك الأسلوب ليس الدليل الوحيد على الحفظ لكنه طبقة اختبار إضافية.",
+        "reasoning": [
+          "الاستدلال أسلوبي مساعد لا بديل عن التوثيق التاريخي.",
+          "انتظام اللفظ والمعنى يجعل الإدخال الناجح أصعب."
+        ],
+        "spokenAnswer": "الحفظ التاريخي لا يعتمد على الأسلوب وحده، لكن الأسلوب يضيف طبقة أخرى. عندما يكون للنص نظام لغوي ومعنوي شديد الخصوصية، إدخال عبارة بشرية ناجحة من غير أثر ليس كإضافة سطر إلى وثيقة عادية.",
+        "sources": [
+          "النبأ العظيم، PDF ص 145-155 تقريبًا، ومنها ص 150."
+        ]
+      },
+      "en": {
+        "title": "Could a human phrase be inserted into the Quran without being detected?",
+        "variants": [
+          "Perhaps small additions entered the text.",
+          "Style does not prevent distortion.",
+          "Couldn't someone imitate the Quranic tone and add a sentence?"
+        ],
+        "framing": "The objection assumes it is possible to insert a small amount of non-original material.",
+        "shortAnswer": "Draz uses the regularity of the composition and its stylistic features as an additional indication against arbitrary insertion, while historical transmission remains an independent foundation.",
+        "detailedAnswer": "Any foreign phrase would need to fit the language, rhythm, meaning and structure. So style is not the only evidence of preservation, but it is an additional layer of testing.",
+        "reasoning": [
+          "The stylistic argument is supporting evidence, not a substitute for historical documentation.",
+          "The regularity of wording and meaning makes a successful insertion harder."
+        ],
+        "spokenAnswer": "Historical preservation doesn't rely on style alone, but style adds another layer. When a text has a highly distinctive linguistic and semantic system, successfully inserting a human phrase without leaving a trace is not like adding a line to an ordinary document.",
+        "sources": [
+          "Al-Naba' al-'Azim, PDF pp. 145–155 approx., including p. 150."
+        ]
+      }
+    },
+    {
+      "id": "BH-JH-001",
+      "file": "public/knowledge/04_jihad_spread_of_islam.md",
+      "category": "history",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الجهاد",
+        "انتشار الإسلام",
+        "الإكراه الديني",
+        "الحرب والسلم"
+      ],
+      "topicAr": "الجهاد وانتشار الإسلام",
+      "topicEn": "Jihad and the Spread of Islam",
+      "ar": {
+        "title": "هل انتشر الإسلام بالسيف؟",
+        "variants": [
+          "الإسلام فُرض بالقوة.",
+          "المسلمون نشروا دينهم بالسيف.",
+          "Islam was spread by the sword."
+        ],
+        "framing": "تدمج الشبهة بين التوسع العسكري وبين الإكراه الفردي على اعتناق الدين.",
+        "shortAnswer": "يناقش دراز الدعوى مباشرة ويفصل بين وجود حروب وبين القول إن غايتها كانت إجبار الناس على الإيمان، ويستدل بمبادئ عدم الإكراه واستمرار جماعات دينية غير مسلمة داخل المجتمعات الإسلامية.",
+        "detailedAnswer": "السؤالان مختلفان: هل وقعت حروب؟ نعم. هل كانت القاعدة أن يغيّر المهزوم دينه قسرًا؟ المصدر يناقش هذا بالنفي ويضع القتال في سياق سياسي وعسكري.",
+        "reasoning": [
+          "الحرب لا تساوي الإكراه على الاعتقاد.",
+          "استمرار الأقليات الدينية يناقض التفسير البسيط للإسلام القسري الشامل."
+        ],
+        "spokenAnswer": "وجود حروب في التاريخ الإسلامي حقيقة، لكن هذا ليس نفس القول إن الناس أُجبروا على تغيير دينهم. دراز يفرق بين القتال السياسي والعسكري وبين الإيمان نفسه، واستمرار اليهود والمسيحيين وغيرهم قرونًا داخل المجتمعات الإسلامية يجعل تفسير الانتشار بالإكراه وحده غير كافٍ.",
+        "sources": [
+          "مدخل إلى القرآن الكريم، فصل «كيف انتشر القرآن الكريم في العالم»، PDF ص 52-67 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Was Islam spread by the sword?",
+        "variants": [
+          "Islam was imposed by force.",
+          "Muslims spread their religion by the sword.",
+          "Islam was spread by the sword."
+        ],
+        "framing": "The objection merges military expansion with forcing individuals to convert.",
+        "shortAnswer": "Draz addresses the claim directly, separating the existence of wars from the claim that their aim was to force people to believe. He argues from the principle of no compulsion and from the continued presence of non-Muslim religious communities within Muslim societies.",
+        "detailedAnswer": "These are two different questions. Did wars take place? Yes. Was the rule that the defeated had to change their religion by force? The source argues that it was not, and places the fighting in a political and military context.",
+        "reasoning": [
+          "War is not the same as coercion in belief.",
+          "The continued presence of religious minorities contradicts the simple explanation of a comprehensive forced Islam."
+        ],
+        "spokenAnswer": "Wars in Islamic history are a fact, but that is not the same as saying people were forced to change their religion. Draz distinguishes between political and military fighting and faith itself, and the fact that Jews, Christians and others continued for centuries within Muslim societies makes coercion alone an insufficient explanation of the spread.",
+        "sources": [
+          "Madkhal ila al-Quran al-Karim (Introduction to the Noble Quran), chapter \"How the Noble Quran spread in the world\", PDF pp. 52–67 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-JH-002",
+      "file": "public/knowledge/04_jihad_spread_of_islam.md",
+      "category": "history",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الجهاد",
+        "انتشار الإسلام",
+        "الإكراه الديني",
+        "الحرب والسلم"
+      ],
+      "topicAr": "الجهاد وانتشار الإسلام",
+      "topicEn": "Jihad and the Spread of Islam",
+      "ar": {
+        "title": "هل آيات القتال تأمر بقتل غير المسلمين لمجرد كفرهم؟",
+        "variants": [
+          "القرآن يأمر بقتل الكفار أينما وجدوا.",
+          "هل كل غير مسلم هدف مشروع؟",
+          "كيف نفهم آيات القتال؟"
+        ],
+        "framing": "تقرأ الشبهة نصوص الحرب منفصلة عن المخاطب والعهود والعدوان والسياق.",
+        "shortAnswer": "يعرض دراز آيات القتال داخل سياق صراع وحرب، مع قيود تتعلق بالعدوان والعهود ووقف القتال؛ فلا يحول لفظًا في سياق حرب معين إلى حكم عام على كل غير مسلم.",
+        "detailedAnswer": "لفهم آية قتالية يجب تحديد المخاطب والواقعة وما يسبقها ويلحقها من أحكام العهد والصلح والعدوان.",
+        "reasoning": [
+          "السياق جزء من الدلالة.",
+          "أحكام الحرب لا تساوي أحكام التعامل اليومي مع كل مخالف في الدين."
+        ],
+        "spokenAnswer": "لا يكفي اقتطاع جملة من سياق حرب وتحويلها إلى قاعدة تعامل مع كل غير مسلم. يجب أن نسأل من المخاطَب وما الحدث وما القيود المحيطة بالنص. دراز يقرأ القتال داخل العهود والعدوان والصلح.",
+        "sources": [
+          "مدخل إلى القرآن الكريم، PDF ص 57-64 تقريبًا."
+        ]
+      },
+      "en": {
+        "title": "Do the verses of fighting command killing non-Muslims simply for their disbelief?",
+        "variants": [
+          "The Quran commands killing the disbelievers wherever they are found.",
+          "Is every non-Muslim a legitimate target?",
+          "How should we understand the verses of fighting?"
+        ],
+        "framing": "The objection reads texts about war in isolation from who is addressed, from treaties, from aggression and from context.",
+        "shortAnswer": "Draz presents the verses of fighting within a context of conflict and war, with limits relating to aggression, treaties and ceasing hostilities. A phrase from a specific war context is not turned into a general ruling on every non-Muslim.",
+        "detailedAnswer": "To understand a verse about fighting, one must identify who is addressed, the event, and the rulings on treaties, peace and aggression that come before and after it.",
+        "reasoning": [
+          "Context is part of the meaning.",
+          "The rulings of war are not the rulings for everyday dealings with everyone of another religion."
+        ],
+        "spokenAnswer": "It isn't enough to cut a sentence out of a war context and turn it into a rule for dealing with every non-Muslim. We have to ask who is being addressed, what the event was, and what limits surround the text. Draz reads fighting within the framework of treaties, aggression and peace.",
+        "sources": [
+          "Madkhal ila al-Quran al-Karim, PDF pp. 57–64 approx."
+        ]
+      }
+    },
+    {
+      "id": "BH-JH-003",
+      "file": "public/knowledge/04_jihad_spread_of_islam.md",
+      "category": "history",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الجهاد",
+        "انتشار الإسلام",
+        "الإكراه الديني",
+        "الحرب والسلم"
+      ],
+      "topicAr": "الجهاد وانتشار الإسلام",
+      "topicEn": "Jihad and the Spread of Islam",
+      "ar": {
+        "title": "كيف يجتمع القتال مع «لا إكراه في الدين»؟",
+        "variants": [
+          "لا إكراه في الدين تناقض الجهاد.",
+          "إذا كان الإسلام يسمح بالقتال فأين حرية العقيدة؟",
+          "هل القتال لإجبار الناس على الإسلام؟"
+        ],
+        "framing": "يفترض الاعتراض أن كل قتال غايته تغيير عقيدة الخصم.",
+        "shortAnswer": "التعارض يختفي عند التفريق بين الحرب كعلاقة سياسية وعسكرية وبين إكراه الضمير على التصديق.",
+        "detailedAnswer": "الإيمان القلبي لا يصنع بالسلاح، ووجود أحكام للتعايش مع غير المسلمين يفترض استمرار اختلاف العقيدة حتى داخل النظام السياسي الإسلامي.",
+        "reasoning": [
+          "الفصل بين مجال الاعتقاد ومجال الحرب.",
+          "وجود تشريعات لغير المسلمين قرينة على عدم اشتراط التحول الديني في كل علاقة سياسية."
+        ],
+        "spokenAnswer": "القتال والإكراه الديني ليسا مترادفين. قد تقع حرب لأسباب سياسية أو دفاعية دون أن يكون تغيير عقيدة الأفراد شرطًا لإنهائها. لذلك يجب الفصل بين مجال الحرب ومجال الاعتقاد.",
+        "sources": [
+          "مدخل إلى القرآن الكريم، PDF ص 57-67."
+        ]
+      },
+      "en": {
+        "title": "How can fighting be reconciled with \"There is no compulsion in religion\"?",
+        "variants": [
+          "\"No compulsion in religion\" contradicts jihad.",
+          "If Islam permits fighting, where is freedom of belief?",
+          "Is fighting meant to force people into Islam?"
+        ],
+        "framing": "The objection assumes that the aim of every fight is to change the opponent's belief.",
+        "shortAnswer": "The contradiction disappears once we distinguish war as a political and military relationship from forcing the conscience to believe.",
+        "detailedAnswer": "Faith in the heart is not produced by weapons, and the existence of rulings for coexisting with non-Muslims assumes that differences of belief continue even within an Islamic political order.",
+        "reasoning": [
+          "The sphere of belief is separate from the sphere of war.",
+          "The existence of legislation for non-Muslims indicates that religious conversion was not a condition of every political relationship."
+        ],
+        "spokenAnswer": "Fighting and religious coercion are not synonyms. A war can happen for political or defensive reasons without a change in individuals' beliefs being a condition for ending it. That's why the sphere of war has to be separated from the sphere of belief.",
+        "sources": [
+          "Madkhal ila al-Quran al-Karim, PDF pp. 57–67."
+        ]
+      }
+    },
+    {
+      "id": "BH-JH-004",
+      "file": "public/knowledge/04_jihad_spread_of_islam.md",
+      "category": "history",
+      "difficulty": "intermediate",
+      "subcategories": [
+        "الجهاد",
+        "انتشار الإسلام",
+        "الإكراه الديني",
+        "الحرب والسلم"
+      ],
+      "topicAr": "الجهاد وانتشار الإسلام",
+      "topicEn": "Jihad and the Spread of Islam",
+      "ar": {
+        "title": "هل كان الدافع الحقيقي للفتوحات هو الغنيمة؟",
+        "variants": [
+          "المسلمون حاربوا من أجل المال.",
+          "الدين كان غطاءً للتوسع والغنائم.",
+          "هل الجهاد مشروع اقتصادي؟"
+        ],
+        "framing": "تختزل الشبهة حركة تاريخية ودينية مركبة في دافع مادي واحد.",
+        "shortAnswer": "يرفض دراز الاختزال المادي الأحادي، ويربط الحركة بسياق ديني وأخلاقي وتشريعي وبقيود على القتال لا يفسرها مجرد طلب الغنيمة.",
+        "detailedAnswer": "وجود الغنيمة في حروب قديمة لا يثبت أنها سبب الدين أو الغاية الوحيدة للحرب؛ يلزم تفسير التضحية والانضباط والبناء الاجتماعي والتشريع أيضًا.",
+        "reasoning": [
+          "التفسير الأحادي لا يشرح كل المعطيات.",
+          "وجود منفعة مادية محتملة لا يثبت أنها الدافع الوحيد."
+        ],
+        "spokenAnswer": "وجود غنائم في حرب قديمة لا يثبت أن الغنيمة هي سبب الدين أو الهدف الوحيد. لإثبات ذلك نحتاج تفسيرًا للتشريع والتضحيات والقيود الأخلاقية وبنية المجتمع الذي نشأ. دراز يرى أن التفسير الاقتصادي وحده أضيق من الظاهرة.",
+        "sources": [
+          "مدخل إلى القرآن الكريم، PDF ص 52-67."
+        ]
+      },
+      "en": {
+        "title": "Was booty the real motive for the conquests?",
+        "variants": [
+          "Muslims fought for money.",
+          "Religion was a cover for expansion and spoils.",
+          "Is jihad an economic project?"
+        ],
+        "framing": "The objection reduces a complex historical and religious movement to a single material motive.",
+        "shortAnswer": "Draz rejects one-dimensional materialist reduction and connects the movement to a religious, moral and legal context, and to restrictions on fighting, which the pursuit of booty alone does not explain.",
+        "detailedAnswer": "The presence of spoils in ancient wars does not prove that they caused the religion or were the only aim of war. Sacrifice, discipline, social construction and law also need explaining.",
+        "reasoning": [
+          "A single-cause explanation does not account for all the data.",
+          "A possible material benefit does not prove it was the only motive."
+        ],
+        "spokenAnswer": "The presence of spoils in an ancient war doesn't prove that spoils were the reason for the religion or its only goal. To prove that, we'd need an explanation of the law, the sacrifices, the moral restrictions and the structure of the society that emerged. Draz sees the purely economic explanation as narrower than the phenomenon.",
+        "sources": [
+          "Madkhal ila al-Quran al-Karim, PDF pp. 52–67."
+        ]
+      }
+    }
+  ]
+}

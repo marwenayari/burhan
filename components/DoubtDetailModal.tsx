@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Copy,
   Check,
+  MessageCircle,
 } from 'lucide-react';
 
 interface DoubtDetailModalProps {
@@ -38,6 +39,8 @@ export default function DoubtDetailModal({
   if (!doubt) return null;
 
   const isAr = language === 'ar';
+  const knowledge = doubt.knowledge;
+  const references = !isAr && knowledge ? knowledge.referencesEn : doubt.references;
 
   const handleShare = () => {
     if (typeof window !== 'undefined') {
@@ -65,7 +68,11 @@ export default function DoubtDetailModal({
             <span>·</span>
             <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              {doubt.confidenceScore}% {isAr ? 'توثيق قطعي' : 'Verified'}
+              {doubt.confidenceScore !== undefined
+                ? `${doubt.confidenceScore}% ${isAr ? 'توثيق قطعي' : 'Verified'}`
+                : isAr
+                  ? 'موثق بالمصدر'
+                  : 'Source-cited'}
             </span>
           </div>
 
@@ -107,18 +114,67 @@ export default function DoubtDetailModal({
         <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 text-start">
           {/* Main Title & Origin */}
           <div>
+            {knowledge && (
+              <div className="flex items-center gap-2 text-[11px] text-[#6B7280] dark:text-neutral-400 mb-2">
+                <span className="font-mono">{knowledge.unitId}</span>
+                <span>·</span>
+                <span>{isAr ? knowledge.topicAr : knowledge.topicEn}</span>
+              </div>
+            )}
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#0A3E31] dark:text-emerald-400 leading-snug mb-3">
               {isAr ? doubt.titleAr : doubt.titleEn}
             </h2>
+            {knowledge && !isAr && !knowledge.isTranslated && (
+              <p className="text-xs text-[#C8A366] dark:text-[#E2C799] mb-3">
+                English translation pending — showing the Arabic source.
+              </p>
+            )}
+            {knowledge && (
+              <div className="mb-4">
+                <h4 className="text-xs font-bold text-[#6B7280] dark:text-neutral-400 mb-2">
+                  {isAr ? 'صيغ أخرى للشبهة' : 'Other ways this is asked'}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {(isAr ? knowledge.questionVariantsAr : knowledge.questionVariantsEn).map(
+                    (variant, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/10 dark:border-white/10 text-xs text-[#374151] dark:text-neutral-300"
+                      >
+                        {variant}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
             <div className="p-4 rounded-2xl bg-[#0A3E31]/5 dark:bg-emerald-950/20 border border-[#0A3E31]/10 dark:border-emerald-500/10">
               <h4 className="text-xs font-bold text-[#C8A366] dark:text-[#E2C799] uppercase tracking-wider mb-1">
-                {isAr ? 'أصل ومنشأ الشبهة' : 'Origin & Historical Context of the Doubt'}
+                {knowledge
+                  ? isAr
+                    ? 'تصوير الشبهة'
+                    : 'How the Objection Is Framed'
+                  : isAr
+                    ? 'أصل ومنشأ الشبهة'
+                    : 'Origin & Historical Context of the Doubt'}
               </h4>
               <p className="text-sm text-[#4B5563] dark:text-neutral-300 leading-relaxed">
                 {isAr ? doubt.originAr : doubt.originEn}
               </p>
             </div>
           </div>
+
+          {/* Section: Short Answer (knowledge base) */}
+          {knowledge && (
+            <div>
+              <h3 className="text-lg font-bold text-[#111827] dark:text-white mb-3">
+                {isAr ? 'الجواب المختصر' : 'Short Answer'}
+              </h3>
+              <p className="p-5 rounded-2xl bg-white dark:bg-[#0E1B17] border-s-4 border-[#0A3E31] dark:border-emerald-500 text-sm sm:text-base leading-loose text-[#1F2937] dark:text-neutral-100">
+                {isAr ? doubt.summaryAr : doubt.summaryEn}
+              </p>
+            </div>
+          )}
 
           {/* Section: Quranic Evidence */}
           {doubt.quranicEvidence.length > 0 && (
@@ -212,7 +268,13 @@ export default function DoubtDetailModal({
           {/* Section: Rational and Philosophical Proofs */}
           <div>
             <h3 className="text-lg font-bold text-[#111827] dark:text-white mb-3">
-              {isAr ? 'البراهين العقلية والمنطقية' : 'Rational & Philosophical Proofs'}
+              {knowledge
+                ? isAr
+                  ? 'الأدلة ومسار الاستدلال'
+                  : 'Evidence & Line of Reasoning'
+                : isAr
+                  ? 'البراهين العقلية والمنطقية'
+                  : 'Rational & Philosophical Proofs'}
             </h3>
             <ul className="space-y-3">
               {(isAr ? doubt.rationalEvidenceAr : doubt.rationalEvidenceEn).map(
@@ -263,12 +325,33 @@ export default function DoubtDetailModal({
           {/* Full Systematic Rebuttal */}
           <div>
             <h3 className="text-lg font-bold text-[#111827] dark:text-white mb-3">
-              {isAr ? 'الرد المفصل والشامل' : 'Full Systematic Rebuttal'}
+              {knowledge
+                ? isAr
+                  ? 'الجواب المفصل'
+                  : 'Detailed Answer'
+                : isAr
+                  ? 'الرد المفصل والشامل'
+                  : 'Full Systematic Rebuttal'}
             </h3>
             <div className="p-6 rounded-2xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/10 dark:border-white/10 text-sm leading-loose whitespace-pre-line text-[#374151] dark:text-neutral-200 font-sans">
               {isAr ? doubt.fullRebuttalAr : doubt.fullRebuttalEn}
             </div>
           </div>
+
+          {/* Section: Conversational Answer (knowledge base) */}
+          {knowledge && (
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <MessageCircle className="w-5 h-5 text-[#C8A366] dark:text-[#E2C799]" />
+                <h3 className="text-lg font-bold text-[#111827] dark:text-white">
+                  {isAr ? 'جواب حواري مقترح' : 'Suggested Conversational Answer'}
+                </h3>
+              </div>
+              <blockquote className="p-5 rounded-2xl bg-[#0A3E31]/5 dark:bg-emerald-950/20 border-s-4 border-[#C8A366] text-sm leading-loose italic text-[#1F2937] dark:text-neutral-200">
+                &ldquo;{isAr ? knowledge.spokenAnswerAr : knowledge.spokenAnswerEn}&rdquo;
+              </blockquote>
+            </div>
+          )}
 
           {/* References & Bibliography */}
           <div>
@@ -276,7 +359,7 @@ export default function DoubtDetailModal({
               {isAr ? 'المراجع والمصادر للاستزادة:' : 'Primary References & Further Reading:'}
             </h4>
             <div className="flex flex-wrap gap-2 text-xs text-[#0A3E31] dark:text-emerald-400">
-              {doubt.references.map((ref, idx) => (
+              {references.map((ref, idx) => (
                 <span
                   key={idx}
                   className="px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 font-medium"

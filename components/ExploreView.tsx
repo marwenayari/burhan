@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { DoubtItem, Language } from '@/lib/types';
 import { TRANSLATIONS } from '@/lib/data/translations';
-import { DOUBTS_DATA } from '@/lib/data/doubts';
+import { DOUBTS_DATA, getDoubtSearchText } from '@/lib/data/doubts';
 import DoubtCard from './DoubtCard';
 import { Search, Filter, Compass, Sparkles, X } from 'lucide-react';
 
@@ -54,15 +54,7 @@ export default function ExploreView({
       const q = searchQuery.trim().toLowerCase();
       if (!q) return matchCat && matchDiff;
 
-      const matchSearch =
-        d.titleAr.toLowerCase().includes(q) ||
-        d.titleEn.toLowerCase().includes(q) ||
-        d.summaryAr.toLowerCase().includes(q) ||
-        d.summaryEn.toLowerCase().includes(q) ||
-        d.fullRebuttalAr.toLowerCase().includes(q) ||
-        d.fullRebuttalEn.toLowerCase().includes(q);
-
-      return matchCat && matchDiff && matchSearch;
+      return matchCat && matchDiff && getDoubtSearchText(d).includes(q);
     });
   }, [searchQuery, selectedCategory, selectedDifficulty]);
 

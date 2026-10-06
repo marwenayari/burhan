@@ -1,4 +1,5 @@
 import { DoubtItem, SkepticPersona } from '../types';
+import { KNOWLEDGE_DOUBTS } from './knowledge';
 
 export const SKEPTIC_PERSONAS: SkepticPersona[] = [
   {
@@ -57,7 +58,8 @@ export const SKEPTIC_PERSONAS: SkepticPersona[] = [
   },
 ];
 
-export const DOUBTS_DATA: DoubtItem[] = [
+// Hand-written doubts with Quran/Hadith evidence and scholar quotes
+const CURATED_DOUBTS: DoubtItem[] = [
   {
     id: 'doubt-evil-suffering',
     slug: 'problem-of-evil-and-suffering',
@@ -573,3 +575,23 @@ export const DOUBTS_DATA: DoubtItem[] = [
     references: ['الدعوة إلى الإسلام - توماس أرنولد', 'حضارة العرب - غوستاف لوبون', 'حقوق غير المسلمين في بلاد الإسلام - وهبة الزحيلي'],
   },
 ];
+
+// Curated doubts first (the home page features DOUBTS_DATA[0]), then the knowledge base
+export const DOUBTS_DATA: DoubtItem[] = [...CURATED_DOUBTS, ...KNOWLEDGE_DOUBTS];
+
+/** All searchable text of a doubt, in both languages. */
+export const getDoubtSearchText = (d: DoubtItem) =>
+  [
+    d.titleAr,
+    d.titleEn,
+    d.summaryAr,
+    d.summaryEn,
+    d.fullRebuttalAr,
+    d.fullRebuttalEn,
+    d.categoryNameAr,
+    d.categoryNameEn,
+    ...(d.knowledge?.questionVariantsAr ?? []),
+    ...(d.knowledge?.questionVariantsEn ?? []),
+  ]
+    .join('\n')
+    .toLowerCase();

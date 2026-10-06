@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { DOUBTS_DATA } from '@/lib/data/doubts';
+import { DOUBTS_DATA, getDoubtSearchText } from '@/lib/data/doubts';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -18,21 +18,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (q.trim()) {
-    results = results.filter((d) => {
-      const matchAr =
-        d.titleAr.toLowerCase().includes(q) ||
-        d.summaryAr.toLowerCase().includes(q) ||
-        d.fullRebuttalAr.toLowerCase().includes(q) ||
-        d.categoryNameAr.toLowerCase().includes(q);
-
-      const matchEn =
-        d.titleEn.toLowerCase().includes(q) ||
-        d.summaryEn.toLowerCase().includes(q) ||
-        d.fullRebuttalEn.toLowerCase().includes(q) ||
-        d.categoryNameEn.toLowerCase().includes(q);
-
-      return matchAr || matchEn;
-    });
+    results = results.filter((d) => getDoubtSearchText(d).includes(q));
   }
 
   return NextResponse.json({

@@ -82,7 +82,13 @@ export default function DoubtCard({
       <div className="pt-3 border-t border-black/5 dark:border-white/5 flex items-center justify-between text-xs">
         <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-medium">
           <CheckCircle2 className="w-3.5 h-3.5" />
-          <span>{doubt.confidenceScore}% {isAr ? 'توثيق قطعي' : 'Verified'}</span>
+          <span>
+            {doubt.confidenceScore !== undefined
+              ? `${doubt.confidenceScore}% ${isAr ? 'توثيق قطعي' : 'Verified'}`
+              : isAr
+                ? 'موثق بالمصدر'
+                : 'Source-cited'}
+          </span>
         </div>
 
         <div className="flex items-center gap-1 text-[#0A3E31] dark:text-emerald-300 font-semibold group-hover:translate-x-0.5 group-hover:rtl:-translate-x-0.5 transition-transform">

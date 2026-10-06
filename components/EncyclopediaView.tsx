@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { DoubtItem, Language } from '@/lib/types';
 import { TRANSLATIONS } from '@/lib/data/translations';
-import { DOUBTS_DATA } from '@/lib/data/doubts';
+import { DOUBTS_DATA, getDoubtSearchText } from '@/lib/data/doubts';
 import { BookOpen, Search, Sparkles, ChevronRight, Bookmark, CheckCircle2 } from 'lucide-react';
 
 interface EncyclopediaViewProps {
@@ -21,26 +21,26 @@ export default function EncyclopediaView({
   const [query, setQuery] = useState('');
 
   const sections = [
-    { id: 'all', titleAr: 'كامل الموسوعة', titleEn: 'Full Encyclopedia', count: DOUBTS_DATA.length },
-    { id: 'creed', titleAr: 'أصول العقيدة والغيبيات', titleEn: 'Theology & Metaphysics', count: 1 },
-    { id: 'sunnah', titleAr: 'علوم السنة وتاريخ التدوين', titleEn: 'Hadith Sciences & Inscription', count: 1 },
-    { id: 'quran', titleAr: 'علوم القرآن وسلامة النص', titleEn: 'Quranic Integrity & Exegesis', count: 1 },
-    { id: 'women', titleAr: 'التشريع وحقوق المرأة', titleEn: 'Jurisprudence & Women’s Rights', count: 1 },
-    { id: 'science', titleAr: 'براهين التصميم والعلم', titleEn: 'Cosmic Design & Science', count: 1 },
-    { id: 'history', titleAr: 'تاريخ الفتوحات وحرية الاعتقاد', titleEn: 'Historical Expeditions & Freedom', count: 1 },
-  ];
+    { id: 'all', titleAr: 'كامل الموسوعة', titleEn: 'Full Encyclopedia' },
+    { id: 'creed', titleAr: 'أصول العقيدة والغيبيات', titleEn: 'Theology & Metaphysics' },
+    { id: 'sunnah', titleAr: 'علوم السنة وتاريخ التدوين', titleEn: 'Hadith Sciences & Inscription' },
+    { id: 'quran', titleAr: 'علوم القرآن وسلامة النص', titleEn: 'Quranic Integrity & Exegesis' },
+    { id: 'women', titleAr: 'التشريع وحقوق المرأة', titleEn: 'Jurisprudence & Women’s Rights' },
+    { id: 'science', titleAr: 'براهين التصميم والعلم', titleEn: 'Cosmic Design & Science' },
+    { id: 'history', titleAr: 'تاريخ الفتوحات وحرية الاعتقاد', titleEn: 'Historical Expeditions & Freedom' },
+  ].map((sec) => ({
+    ...sec,
+    count:
+      sec.id === 'all'
+        ? DOUBTS_DATA.length
+        : DOUBTS_DATA.filter((d) => d.category === sec.id).length,
+  }));
 
   const filteredItems = DOUBTS_DATA.filter((d) => {
     const matchSec = selectedSection === 'all' || d.category === selectedSection;
     const q = query.trim().toLowerCase();
     if (!q) return matchSec;
-    return (
-      matchSec &&
-      (d.titleAr.toLowerCase().includes(q) ||
-        d.titleEn.toLowerCase().includes(q) ||
-        d.summaryAr.toLowerCase().includes(q) ||
-        d.fullRebuttalAr.toLowerCase().includes(q))
-    );
+    return matchSec && getDoubtSearchText(d).includes(q);
   });
 
   return (
@@ -127,7 +127,11 @@ export default function EncyclopediaView({
                   </div>
                   <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    {item.confidenceScore}%
+                    {item.confidenceScore !== undefined
+                      ? `${item.confidenceScore}%`
+                      : isAr
+                        ? 'موثق بالمصدر'
+                        : 'Source-cited'}
                   </span>
                 </div>
 
@@ -142,9 +146,19 @@ export default function EncyclopediaView({
                 {/* Evidence count tags (unboxed text) */}
                 <div className="flex items-center justify-between pt-3 border-t border-black/5 dark:border-white/5 text-xs">
                   <div className="flex items-center gap-3 text-[11px] text-[#6B7280] dark:text-neutral-400">
-                    <span>{item.quranicEvidence.length} {isAr ? 'شواهد قرآنية' : 'Quranic proofs'}</span>
-                    <span>·</span>
-                    <span>{item.hadithEvidence.length} {isAr ? 'أحاديث صحيحة' : 'Authentic Hadiths'}</span>
+                    {item.knowledge ? (
+                      <>
+                        <span className="font-mono">{item.knowledge.unitId}</span>
+                        <span>·</span>
+                        <span>{isAr ? item.knowledge.topicAr : item.knowledge.topicEn}</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>{item.quranicEvidence.length} {isAr ? 'شواهد قرآنية' : 'Quranic proofs'}</span>
+                        <span>·</span>
+                        <span>{item.hadithEvidence.length} {isAr ? 'أحاديث صحيحة' : 'Authentic Hadiths'}</span>
+                      </>
+                    )}
                     <span>·</span>
                     <span>{item.references.length} {isAr ? 'مراجع أصلية' : 'References'}</span>
                   </div>

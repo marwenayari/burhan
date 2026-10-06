@@ -39,7 +39,7 @@ export interface DoubtItem {
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   difficultyAr: string;
   difficultyEn: string;
-  confidenceScore: number; // e.g. 98%
+  confidenceScore?: number; // e.g. 98% — curated items only
   summaryAr: string;
   summaryEn: string;
   originAr: string; // The origin/source of the doubt
@@ -68,8 +68,23 @@ export interface DoubtItem {
   fullRebuttalAr: string;
   fullRebuttalEn: string;
   references: string[];
-  viewsCount: number;
+  viewsCount?: number;
   readTimeMin: number;
+  /** Present on items generated from the knowledge base (public/knowledge/*.md) */
+  knowledge?: KnowledgeDetails;
+}
+
+export interface KnowledgeDetails {
+  unitId: string; // e.g. BH-QP-001
+  file: string;
+  topicAr: string;
+  topicEn: string;
+  questionVariantsAr: string[];
+  questionVariantsEn: string[];
+  spokenAnswerAr: string;
+  spokenAnswerEn: string;
+  referencesEn: string[];
+  isTranslated: boolean;
 }
 
 export interface ChatMessage {

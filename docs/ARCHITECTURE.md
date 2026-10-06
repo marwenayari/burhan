@@ -18,7 +18,7 @@ It started as a Google AI Studio applet (see `metadata.json`, `next.config.ts` H
 | Icons      | `lucide-react`                                                         |
 | Text LLM   | Gemini via `@google/genai` (`lib/gemini.ts`, server-side only)         |
 | Voice      | ElevenLabs Conversational AI widget (see [VOICE_DEBATE.md](./VOICE_DEBATE.md)) |
-| Data       | Static TypeScript data in `lib/data/` — no database                   |
+| Data       | Markdown knowledge base (`public/knowledge/`) + static TypeScript data in `lib/data/`; no database |
 
 Env vars (`.env.example`): `GEMINI_API_KEY`, `APP_URL`, `NEXT_PUBLIC_ELEVENLABS_AGENT_ID`.
 
@@ -55,7 +55,55 @@ Nothing is persisted: refresh = fresh state.
 
 ## Content (`lib/data/`)
 
-- `doubts.ts` — `SKEPTIC_PERSONAS` (3 personas) and `DOUBTS_DATA` (6 fully-sourced objections: problem of evil, hadith preservation, Quran preservation, women's inheritance, miracles & science, conquests & tolerance). This is the app's knowledge base.
+- `doubts.ts` — `SKEPTIC_PERSONAS` (3 personas) and `DOUBTS_DATA`, which is the 6 curated objections (problem of evil, hadith preservation, Quran preservation, women's inheritance, miracles & science, conquests & tolerance) followed by every unit of the knowledge base. Also exports `getDoubtSearchText()`, which Explore, Encyclopedia and `/api/search` all use for search.
+- `knowledge.ts` — maps the generated knowledge units to `DoubtItem`s (`KNOWLEDGE_DOUBTS`).
+- `knowledge.generated.json` — generated from the Markdown files. Do not edit by hand.
+
+### Knowledge base (`public/knowledge/`)
+
+The Markdown files are the source of truth. The same files can be uploaded to the ElevenLabs agent's knowledge base.
+
+| Path                              | Content                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| `public/knowledge/0X_*.md`        | Arabic units (source of truth). Only files whose frontmatter has a `category` are read. |
+| `public/knowledge/en/0X_*.md`     | English translation of each unit, matched by unit id, not by file name          |
+| `00_README…`, `05_agent_…`        | Documentation and agent policy. Skipped by the parser.                         |
+
+Each unit has this shape (the English mirror uses the headings in brackets):
+
+```md
+## BH-QP-001 - Title of the objection
+### صيغ الشبهة            (Question variants)               ← "- " list
+### تصوير الشبهة           (How the objection is framed)
+### الجواب المختصر         (Short answer)
+### الجواب المفصل          (Detailed answer)
+### الأدلة ومسار الاستدلال  (Evidence and line of reasoning)  ← "- " list
+### جواب حواري للصوت       (Spoken answer)
+### المصادر               (Sources)                         ← "- " list
+```
+
+`scripts/build-knowledge.mjs` parses the files into `lib/data/knowledge.generated.json`. It runs automatically before `dev` and `build`, and can be run alone with `npm run knowledge`. It **fails** on a malformed unit (unknown section, missing section, bad heading, duplicate id, unknown category), so a broken file never ships silently. A unit with no English translation only produces a warning; the app then shows the Arabic text with an "English translation pending" note.
+
+Frontmatter used by the parser:
+- `category` (required): an Arabic name (`القرآن`, `الإسلام والتاريخ`, `العقيدة`, `السنة`, `المرأة`, `العلم`, `الإلحاد`) or a `DoubtCategory` id.
+- `difficulty` (optional): `beginner` | `intermediate` | `advanced`. Defaults to `intermediate`, because the units carry no level of their own.
+
+How the fields map to the UI:
+
+| Unit section        | `DoubtItem` field                         | Shown as                                            |
+| ------------------- | ----------------------------------------- | --------------------------------------------------- |
+| Title               | `titleAr/En`                              | Card and modal title                                |
+| Question variants   | `knowledge.questionVariantsAr/En`         | Chips under the title; also searchable              |
+| Framing             | `originAr/En`                             | "تصوير الشبهة" box                                  |
+| Short answer        | `summaryAr/En`                            | Card summary and "الجواب المختصر"                   |
+| Reasoning           | `rationalEvidenceAr/En`                   | "الأدلة ومسار الاستدلال" list                       |
+| Detailed answer     | `fullRebuttalAr/En`                       | "الجواب المفصل"                                     |
+| Spoken answer       | `knowledge.spokenAnswerAr/En`             | "جواب حواري مقترح"                                  |
+| Sources             | `references` / `knowledge.referencesEn`   | Reference chips                                     |
+
+Knowledge units have no `confidenceScore`, so cards show "موثق بالمصدر / Source-cited" instead of a percentage. `readTimeMin` is computed from the word count.
+
+**Adding content:** add a unit to an Arabic file (or add a new file with a `category`), add its translation under `en/` with the same id, then restart `dev` or run `npm run knowledge`.
 - `translations.ts` — `TRANSLATIONS.ar` / `TRANSLATIONS.en` UI strings. Many components also inline `isAr ? '…' : '…'` ternaries.
 
 **Bilingual convention:** every user-facing string has an Arabic and English form; components compute `const isAr = language === 'ar'`.
