@@ -54,7 +54,7 @@ export default function AuthModal({
           <X className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6 pe-10">
           <div className="w-12 h-12 rounded-2xl bg-[#0A3E31] dark:bg-emerald-600 text-white flex items-center justify-center font-['Amiri',serif] font-bold text-2xl shadow-md">
             ب
           </div>

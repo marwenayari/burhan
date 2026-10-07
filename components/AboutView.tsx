@@ -180,7 +180,7 @@ export default function AboutView({ language }: AboutViewProps) {
         </div>
 
         {/* Code Snippet for Developers */}
-        <div className="rounded-2xl bg-[#0A1210] text-[#E5E7EB] p-4 text-xs font-mono overflow-x-auto border border-white/10 dir-ltr text-start">
+        <div className="rounded-2xl bg-[#0A1210] text-[#E5E7EB] p-4 text-xs font-mono overflow-x-auto border border-white/10 text-left" dir="ltr">
           <div className="text-[10px] text-[#9CA3AF] mb-2">{`// Sample API Integration with Burhan AI Simulator`}</div>
           <pre>{`// POST /api/simulator
 const response = await fetch("https://burhan.ai/api/simulator", {

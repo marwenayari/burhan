@@ -25,15 +25,17 @@ export default function Sidebar({
   language,
 }: SidebarProps) {
   const t = TRANSLATIONS[language];
+  const isAr = language === 'ar';
 
+  // shortLabel: fits the 7-tab mobile bottom bar
   const items = [
-    { id: 'home', label: t.navHome, icon: Home },
-    { id: 'explore', label: t.navExplore, icon: Compass },
-    { id: 'simulator', label: t.navSimulator, icon: MessageSquareCode },
-    { id: 'training', label: t.navTraining, icon: Award },
-    { id: 'encyclopedia', label: t.navEncyclopedia, icon: BookOpen },
-    { id: 'profile', label: t.navProfile, icon: User },
-    { id: 'about', label: t.navAbout, icon: Info },
+    { id: 'home', label: t.navHome, shortLabel: isAr ? 'الرئيسية' : 'Home', icon: Home },
+    { id: 'explore', label: t.navExplore, shortLabel: isAr ? 'البحث' : 'Explore', icon: Compass },
+    { id: 'simulator', label: t.navSimulator, shortLabel: isAr ? 'المحاكي' : 'Simulator', icon: MessageSquareCode },
+    { id: 'training', label: t.navTraining, shortLabel: isAr ? 'التدريب' : 'Training', icon: Award },
+    { id: 'encyclopedia', label: t.navEncyclopedia, shortLabel: isAr ? 'الموسوعة' : 'Library', icon: BookOpen },
+    { id: 'profile', label: t.navProfile, shortLabel: isAr ? 'الملف' : 'Profile', icon: User },
+    { id: 'about', label: t.navAbout, shortLabel: isAr ? 'عن برهان' : 'About', icon: Info },
   ];
 
   return (
@@ -84,15 +86,16 @@ export default function Sidebar({
       </aside>
 
       {/* Mobile Bottom Navigation Bar */}
-      <nav className="xl:hidden fixed bottom-0 inset-x-0 z-40 bg-[#FBF9F4]/95 dark:bg-[#0A1210]/95 backdrop-blur-lg border-t border-[#0A3E31]/10 dark:border-white/10 px-2 py-2 flex items-center justify-around">
-        {items.slice(0, 5).map((item) => {
+      <nav className="xl:hidden fixed bottom-0 inset-x-0 z-40 bg-[#FBF9F4]/95 dark:bg-[#0A1210]/95 backdrop-blur-lg border-t border-[#0A3E31]/10 dark:border-white/10 px-1 sm:px-2 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] flex items-stretch justify-around">
+        {items.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
           return (
             <button
               key={item.id}
               onClick={() => setCurrentTab(item.id)}
-              className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl text-[10px] font-medium transition-colors ${
+              aria-label={item.label}
+              className={`flex-1 min-w-0 max-w-24 flex flex-col items-center gap-1 py-1 px-0.5 rounded-xl text-[10px] font-medium transition-colors ${
                 isActive
                   ? 'text-[#0A3E31] dark:text-emerald-400 font-bold'
                   : 'text-[#6B7280] dark:text-neutral-400'
@@ -105,7 +108,7 @@ export default function Sidebar({
               >
                 <Icon className="w-5 h-5" />
               </div>
-              <span className="truncate max-w-[54px]">{item.label}</span>
+              <span className="truncate max-w-full">{item.shortLabel}</span>
             </button>
           );
         })}

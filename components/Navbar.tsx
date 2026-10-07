@@ -72,7 +72,7 @@ export default function Navbar({
         </div>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden xl:flex items-center gap-1 xl:gap-2">
           {navItems.map((item) => {
             const isActive = currentTab === item.id;
             return (

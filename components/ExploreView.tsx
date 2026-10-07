@@ -125,11 +125,11 @@ export default function ExploreView({
 
         {/* Difficulty Selector */}
         <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-black/5 dark:border-white/5">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold text-[#6B7280] dark:text-neutral-400">
               {t.filterByDifficulty}:
             </span>
-            <div className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-1.5">
               {difficulties.map((diff) => {
                 const isActive = selectedDifficulty === diff.id;
                 return (

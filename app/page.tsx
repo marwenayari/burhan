@@ -164,7 +164,7 @@ export default function Page() {
       />
 
       {/* Quiet, refined footer (Anti-slop compliant) */}
-      <footer className="border-t border-[#0A3E31]/10 dark:border-white/10 bg-[#F4EFE6]/50 dark:bg-[#080E0D] py-8 text-center text-xs text-[#6B7280] dark:text-neutral-400">
+      <footer className="border-t border-[#0A3E31]/10 dark:border-white/10 bg-[#F4EFE6]/50 dark:bg-[#080E0D] pt-8 pb-28 xl:pb-8 text-center text-xs text-[#6B7280] dark:text-neutral-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-bold text-[#0A3E31] dark:text-emerald-400 font-['Cairo',sans-serif]">

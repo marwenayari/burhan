@@ -545,7 +545,7 @@ export default function SimulatorView({
           {isVoiceSession ? (
             /* Voice Stage (8 cols on lg): embedded ElevenLabs agent */
             <VoiceDebateStage
-              className="lg:col-span-8 h-[650px]"
+              className="lg:col-span-8 h-[min(650px,calc(100dvh_-_10rem))] min-h-[30rem] lg:h-[650px]"
               language={language}
               persona={selectedPersonaId ? selectedPersona : null}
               topic={activeTopic}
@@ -554,7 +554,7 @@ export default function SimulatorView({
             />
           ) : (
             /* Main Chat Area (8 cols on lg) */
-            <div className="lg:col-span-8 flex flex-col h-[650px] bg-white dark:bg-[#0E1B17] rounded-3xl border border-[#0A3E31]/10 dark:border-white/10 shadow-sm overflow-hidden">
+            <div className="lg:col-span-8 flex flex-col h-[min(650px,calc(100dvh_-_10rem))] min-h-[30rem] lg:h-[650px] bg-white dark:bg-[#0E1B17] rounded-3xl border border-[#0A3E31]/10 dark:border-white/10 shadow-sm overflow-hidden">
               {/* Chat Top Banner */}
               <div className="px-5 py-3.5 border-b border-[#0A3E31]/10 dark:border-white/10 bg-[#FBF9F4] dark:bg-[#0A1210] flex items-center justify-between">
                 <div className="flex items-center gap-3">

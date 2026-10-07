@@ -122,12 +122,14 @@ export default function VoiceDebateStage({
                   ? persona.nameAr
                   : persona.nameEn
                 : isAr
-                  ? 'حدّد نمط المشكك صوتياً'
-                  : 'Tell the agent which skeptic'}
+                  ? "حدّد نمط المشكك صوتيا أو حاور بُرهان"
+                  : "Tell the agent which skeptic"}
             </div>
             <div className="text-[11px] text-[#6B7280] dark:text-neutral-400 truncate max-w-xs sm:max-w-md">
               {topic ||
-                (isAr ? 'واذكر موضوع المناظرة للمحاور' : 'and say the debate topic')}
+                (isAr
+                  ? "واذكر موضوع المناظرة للمحاور"
+                  : "and say the debate topic")}
             </div>
           </div>
         </div>

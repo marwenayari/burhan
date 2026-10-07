@@ -76,8 +76,8 @@ export default function EncyclopediaView({
       {/* 2-Column Encyclopedia Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sections Sidebar (4 cols) */}
-        <div className="lg:col-span-4 space-y-2">
-          <div className="text-xs font-bold text-[#6B7280] dark:text-neutral-400 uppercase tracking-wider mb-3">
+        <div className="lg:col-span-4 flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 lg:block lg:space-y-2 lg:overflow-visible lg:pb-0">
+          <div className="hidden lg:block text-xs font-bold text-[#6B7280] dark:text-neutral-400 uppercase tracking-wider mb-3">
             {isAr ? 'أبواب ومحاور الموسوعة' : 'Encyclopedia Sections'}
           </div>
           {sections.map((sec) => {
@@ -86,7 +86,7 @@ export default function EncyclopediaView({
               <button
                 key={sec.id}
                 onClick={() => setSelectedSection(sec.id)}
-                className={`w-full flex items-center justify-between p-3.5 rounded-2xl text-xs font-semibold text-start transition-all cursor-pointer ${
+                className={`shrink-0 lg:w-full flex items-center justify-between gap-3 px-3.5 py-2.5 lg:p-3.5 rounded-2xl text-xs font-semibold text-start whitespace-nowrap transition-all cursor-pointer ${
                   isSelected
                     ? 'bg-[#0A3E31] text-white shadow-sm dark:bg-emerald-600'
                     : 'bg-white dark:bg-[#0E1B17] text-[#374151] dark:text-neutral-300 border border-[#0A3E31]/10 dark:border-white/10 hover:border-[#0A3E31]/30'
@@ -117,8 +117,8 @@ export default function EncyclopediaView({
                 onClick={() => onSelectDoubt(item)}
                 className="p-6 rounded-3xl bg-white dark:bg-[#0E1B17] border border-[#0A3E31]/10 dark:border-white/10 hover:border-[#0A3E31]/30 dark:hover:border-emerald-500/30 hover:shadow-md transition-all cursor-pointer group text-start"
               >
-                <div className="flex items-center justify-between text-xs text-[#6B7280] dark:text-neutral-400 mb-2">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs text-[#6B7280] dark:text-neutral-400 mb-2">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                     <span className="font-bold text-[#0A3E31] dark:text-emerald-400">
                       {isAr ? item.categoryNameAr : item.categoryNameEn}
                     </span>
@@ -144,8 +144,8 @@ export default function EncyclopediaView({
                 </p>
 
                 {/* Evidence count tags (unboxed text) */}
-                <div className="flex items-center justify-between pt-3 border-t border-black/5 dark:border-white/5 text-xs">
-                  <div className="flex items-center gap-3 text-[11px] text-[#6B7280] dark:text-neutral-400">
+                <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-3 border-t border-black/5 dark:border-white/5 text-xs">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-[#6B7280] dark:text-neutral-400 *:whitespace-nowrap">
                     {item.knowledge ? (
                       <>
                         <span className="font-mono">{item.knowledge.unitId}</span>
@@ -163,7 +163,7 @@ export default function EncyclopediaView({
                     <span>{item.references.length} {isAr ? 'مراجع أصلية' : 'References'}</span>
                   </div>
 
-                  <span className="font-semibold text-[#0A3E31] dark:text-emerald-400 flex items-center gap-1 group-hover:translate-x-0.5 group-hover:rtl:-translate-x-0.5 transition-transform">
+                  <span className="font-semibold text-[#0A3E31] dark:text-emerald-400 flex items-center gap-1 whitespace-nowrap ms-auto group-hover:translate-x-0.5 group-hover:rtl:-translate-x-0.5 transition-transform">
                     <span>{isAr ? 'قراءة المبحث' : 'View Study'}</span>
                     <ChevronRight className="w-3.5 h-3.5 rtl:rotate-180" />
                   </span>
