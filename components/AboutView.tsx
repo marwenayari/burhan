@@ -26,29 +26,29 @@ export default function AboutView({ language }: AboutViewProps) {
 
   const advisoryCouncil = [
     {
-      nameAr: "أ. د. عبد الله بن علي الشهري",
-      nameEn: "Prof. Abdullah M. Al-Shehri",
+      nameAr: "أ. د. خالد بن سعيد المنصوري (دعوة)",
+      nameEn: "Prof. Khalid S. Al-Mansouri (Invited)",
       roleAr: "أستاذ العقيدة والمذاهب المعاصرة ومقارنة الأديان",
       roleEn:
         "Professor of Creed, Contemporary Schools of Thought, and Comparative Religion",
-      institutionAr: "جامعة الأمير سطام بن عبد العزيز",
-      institutionEn: "Prince Sattam bin Abdulaziz University",
+      institutionAr: "جامعة النخيل الدولية (افتراضية)",
+      institutionEn: "Al-Nakheel International University (fictional)",
     },
     {
-      nameAr: "د. سامي عامري",
-      nameEn: "Dr. Sami Ameri",
+      nameAr: "د. يوسف حمدان (مستقبلا)",
+      nameEn: "Dr. Yousef Hamdan (Future)",
       roleAr: "كبير الباحثين في الفلسفة ومناهج الاستدلال",
       roleEn: "Senior Fellow in Philosophy & Epistemology",
-      institutionAr: "مركز براهين للأبحاث ودراسة الإلحاد",
-      institutionEn: "Baraheen Research Center",
+      institutionAr: "مركز الأفق للأبحاث الفكرية (افتراضي)",
+      institutionEn: "Al-Ufuq Research Center (fictional)",
     },
     {
-      nameAr: "أ.د. أحمد بن محمد اللهيب",
-      nameEn: "Dr. Ahmed Al-Lahib",
+      nameAr: "أ.د. عمر بن فهد الرشيدي (دعوة)",
+      nameEn: "Prof. Omar F. Al-Rasheedi (Invited)",
       roleAr: "أستاذ العقيدة والمذاهب المعاصرة",
       roleEn: "Professor of Creed and Contemporary Schools of Thought",
-      institutionAr: "جامعة الملك سعود",
-      institutionEn: "King Saud University",
+      institutionAr: "جامعة الريان الأهلية (افتراضية)",
+      institutionEn: "Al-Rayyan National University (fictional)",
     },
   ];
 
