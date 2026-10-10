@@ -122,7 +122,7 @@ export default function HomeView({
       <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
-            value: "100+",
+            value: "99+",
             labelAr: "شبهة مفندة وموثقة",
             labelEn: "Documented Doubts",
             icon: ShieldCheck,
